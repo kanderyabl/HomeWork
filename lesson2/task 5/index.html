@@ -30,7 +30,7 @@
         prompt("введіть кільскість секунд що пройшли від початку добі:", "2000")
       );
       let hours = Math.floor(sec / 3600);
-      let minutes = (sec % 3600) / 60;
+      let minutes = Math.floor((sec % 3600) / 60);
       document.write(`
       <p>${sec} сек. це ${hours} год. і ${minutes} хв.</p>
       `);
