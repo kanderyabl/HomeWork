@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="/syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./scripts/main.js"></script>
+  </head>
+  <body>
+    <h1>lesson 2</h1>
+    <h3>task 0</h3>
+    <p class="tz">TT: обчислити значення виразів</p>
+    <img src="./task0.png" alt="" />
+    <script>
+      let a = parseInt(prompt("вкажіть значення а:", "1"));
+      let b = parseInt(prompt("вкажіть значення b:", "1"));
+      let c = parseInt(prompt("вкажіть значення c:", "1"));
+      let S1 = a + 12 + b;
+      let S2 = Math.sqrt((a + b) / (2 * a));
+      let S3 = Math.cbrt((a + b) * c);
+      let S4 = Math.sin(a / -b);
+      document.write(`
+      <p>a = ${a}</p>
+      <p>b = ${b}</p>
+      <p>c = ${c}</p>
+      <p>S1 = ${S1}</p>
+      <p>S2 = ${S2}</p>
+      <p>S3 = ${S3}</p>
+      <p>S4 = ${S4}</p>
+      `);
+    </script>
+    <a href="/lesson2/index.html"><h2>back</h2></a>
+  </body>
+</html>

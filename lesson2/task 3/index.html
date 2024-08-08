@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="/syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 2</h1>
+    <h3>task 3</h3>
+    <p class="tz">
+      TT: Дано вартість одиниці товару і кількість. Знайти загальну вартість та
+      ПДВ (5% від загальної вартості).
+    </p>
+    <script>
+      let cost = parseInt(prompt("введіть вартість товару:", "10"));
+      let amount = parseInt(prompt("введіть кількість товару:", "1"));
+      let totalCost = cost * amount;
+      let pdv = (totalCost / 100) * 5;
+      document.write(`
+      <table>
+        <tr>
+          <td>кількість товару</td>
+          <td>${amount}шт</td>
+        </tr>
+        <tr>
+          <td>вартість товару:</td>
+          <td>${cost}грн</td>
+        </tr>
+        <tr>
+          <td>загальна вартість:</td>
+          <td>${totalCost}грн</td>
+        </tr>
+        <tr>
+          <td>ПДВ:</td>
+          <td>${pdv}грн</td>
+        </tr>
+      </table>
+      `);
+    </script>
+
+    <a href="/lesson2/index.html"><h2>back</h2></a>
+  </body>
+</html>

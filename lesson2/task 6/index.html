@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="/syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 2</h1>
+    <h3>task 6</h3>
+    <p class="tz">
+      TT: З клавіатури вводяться вартість товару та кількість одиниць 3 товарів.
+      Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек
+      (як у супермаркеті) використовуючи елементи розмітки.
+
+      <script>
+        let firstProdCost = parseInt(
+          prompt("введіть вартість першого товару:", "200")
+        );
+        let firstProdQuantity = parseInt(
+          prompt("введіть кількість першого товару:", "10")
+        );
+        let secondProdCost = parseInt(
+          prompt("введіть вартість другого товару:", "300")
+        );
+        let secondProdQuantity = parseInt(
+          prompt("введіть кількість другого товару:", "15")
+        );
+        let thridProdCost = parseInt(
+          prompt("введіть вартість третьего товару:", "150")
+        );
+        let thridProdQuantity = parseInt(
+          prompt("введіть кількість третьего товару:", "5")
+        );
+        let totalCostFirstProds = firstProdCost * firstProdQuantity;
+        let totalCostSecondProds = secondProdCost * secondProdQuantity;
+        let totalCostThridProds = thridProdCost * thridProdQuantity;
+        let totalCostProds =
+          totalCostFirstProds + totalCostSecondProds + totalCostThridProds;
+        document.write(`
+        <table>
+       <tr>
+        <td>товар</td>
+        <td>вартість товару</td>
+        <td>кількість товару</td>
+        <td>загальна вартість товару</td>
+       </tr>
+       <tr>
+        <td>перший товар</td>
+        <td>${firstProdCost}грн.</td>
+        <td>${firstProdQuantity}шт.</td>
+        <td>${totalCostFirstProds}грн.</td>
+       </tr>
+       <tr>
+        <td>другий товар</td>
+        <td>${secondProdCost}грн.</td>
+        <td>${secondProdQuantity}шт.</td>
+        <td>${totalCostSecondProds}грн.</td>
+       </tr>
+       <tr>
+        <td>третій товар</td>
+        <td>${thridProdCost}грн.</td>
+        <td>${thridProdQuantity}шт.</td>
+        <td>${totalCostThridProds}грн.</td>
+       </tr>
+       <tr>
+        <td>сума</td>
+        <td></td>
+        <td></td>
+        <td>${totalCostProds}грн.</td>
+       </tr>
+      </table>
+        `);
+      </script>
+    </p>
+
+    <a href="/lesson2/index.html"><h2>back</h2></a>
+  </body>
+</html>

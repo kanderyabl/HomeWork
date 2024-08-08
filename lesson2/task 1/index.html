@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="/syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 2</h1>
+    <h3>task 1</h3>
+    <p class="tz">
+      TT: Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у
+      формі таблиці
+    </p>
+    <script>
+      let a = parseInt(prompt("вкажіть перше число:", "0"));
+      let b = parseInt(prompt("вкажіть друге число:", "0"));
+      let sum = a + b;
+      let multipl = a * b;
+      let divis = a / b;
+      document.write(`
+        
+      <table>
+      <tr>
+        <td>вибранні числа:</td>
+        <td>${a} та ${b}</td>
+      </tr>
+      <tr>
+        <td>сума:</td>
+        <td>${sum}</td>
+      </tr>
+      <tr>
+        <td>добуток:</td>
+        <td>${multipl}</td>
+      </tr>
+      <tr>
+        <td>частка:</td>
+        <td>${divis}</td>
+      </tr>
+    </table>
+
+        `);
+    </script>
+
+    <a href="/lesson2/index.html"><h2>back</h2></a>
+  </body>
+</html>

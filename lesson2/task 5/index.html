@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="/syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 2</h1>
+    <h3>task 5</h3>
+    <p class="tz">
+      TT: Дано кількість секунд, що пройшла від початку доби. Визначити скільки
+      це годин і хвилин
+    </p>
+    <script>
+      let sec = parseInt(
+        prompt("введіть кільскість секунд що пройшли від початку добі:", "2000")
+      );
+      let hours = Math.floor(sec / 3600);
+      let minutes = (sec % 3600) / 60;
+      document.write(`
+      <p>${sec} сек. це ${hours} год. і ${minutes} хв.</p>
+      `);
+    </script>
+
+    <a href="/lesson2/index.html"><h2>back</h2></a>
+  </body>
+</html>
