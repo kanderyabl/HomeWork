@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 3</h1>
+    <h3>task 6</h3>
+    <p class="tz">
+      TT: З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.
+    </p>
+    <script>
+      // const mon = 1;
+      // const tue = 2;
+      // const wed = 3;
+      // const thu = 4;
+      // const fri = 5;
+      // const sat = 6;
+      // const sun = 7;
+      let userPicDay = parseInt(prompt("Введіть номер дня тиждня:", "1"));
+      if (userPicDay === 1) {
+        document.write(`<p>Це понеділок</p>`);
+      } else if (userPicDay === 2) {
+        document.write(`<p>Це вівторок</p>`);
+      } else if (userPicDay === 3) {
+        document.write(`<p>Це середа</p>`);
+      } else if (userPicDay === 4) {
+        document.write(`<p>Це четверг</p>`);
+      } else if (userPicDay === 5) {
+        document.write(`<p>Це п'ятниця</p>`);
+      } else if (userPicDay === 6) {
+        document.write(`<p>Це суббота</p>`);
+      } else if (userPicDay === 7) {
+        document.write(`<p>Це неділя</p>`);
+      } else document.write(`Введіть коректну цифру`);
+    </script>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

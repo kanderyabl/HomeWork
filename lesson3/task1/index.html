@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 3</h1>
+    <h3>task 1</h3>
+    <p class="tz">
+      TT: З клавіатури вводяться імена двох дітей та кількість у них цукерок.
+      Вивести не екран ім’я тієї дитини, у якої кількість цукерок є більшою, або
+      вивести, що кількість однакова.
+    </p>
+    <script>
+      let firstChildName = prompt("введіть ім/'я першої дитини:", "Володимир");
+      let secondChildName = prompt("введіть ім/'я другої дитини:", "Андрій");
+      let firstChildAmountCandies = parseInt(
+        prompt("введіть кількість цукерок першої дитини:", "20")
+      );
+      let secondChildAmountCandies = parseInt(
+        prompt("введіть кількість цукерок другої дитини:", "30")
+      );
+      if (firstChildAmountCandies === secondChildAmountCandies) {
+        document.write(`
+            <p>кількість цукерок у дітей однакова</p>
+            `);
+      } else if (firstChildAmountCandies > secondChildAmountCandies) {
+        document.write(`
+            <p>дитина з більшою кількістю цукерок: ${firstChildName}</p>
+            `);
+      } else {
+        document.write(`
+            <p>дитина з більшою кількістю цукерок: ${secondChildName}</p>
+            `);
+      }
+    </script>
+    <p></p>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

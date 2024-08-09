@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 3</h1>
+    <h3>task 5</h3>
+    <p class="tz">
+      TT: З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий
+      автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного
+      засобу, яким він може керувати.
+      <script>
+        const moto = "A";
+        const car = "B";
+        const truck = "C";
+        let userCategory = prompt(
+          "Введіть вашу водійську категорію:",
+          "A"
+        ).toLocaleUpperCase();
+        console.log(userCategory);
+        if (userCategory == moto) {
+          document.write(`
+          <p>Вітаю! вам дозволено керувати мототранспортом</p>
+          `);
+        } else if (userCategory == car) {
+          document.write(`
+          <p>Вітаю! вам дозволено керувати легковим автомобілем</p>
+          `);
+        } else if (userCategory == truck) {
+          document.write(`
+          <p>Вітаю! вам дозволено керувати вантажним автомобілем</p>
+          `);
+        } else
+          document.write(`
+        <p>Введіть коректну категорію</p>
+        
+        `);
+      </script>
+    </p>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

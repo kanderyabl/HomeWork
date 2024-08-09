@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 3</h1>
+    <h3>task 3</h3>
+    <p class="tz">
+      TT: Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число
+      за 2 спроби.
+      <script>
+        let randomNum = 1 + Math.floor(Math.random() * 5);
+        alert("Вгадайте загадане ціле число від 1 до 5");
+        let firstPicNum = parseInt(prompt("перша спроба:", "1"));
+        if (randomNum === firstPicNum) {
+          document.write(`
+          <p>Чудово! ви вгадали число ${randomNum}</p>
+          `);
+        } else {
+          let secondPicNum = parseInt(
+            prompt("Першу спробу витрачено. друга спроба:", "5")
+          );
+          if (randomNum === secondPicNum) {
+            document.write(`
+          <p>Чудово! ви вгадали число ${randomNum}</p>
+          `);
+          } else {
+            document.write(`
+          <p>Нажаль вам не вдалося вгадати:(</p>
+          <p>загадане число було: ${randomNum}</p>
+          `);
+          }
+        }
+      </script>
+    </p>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
