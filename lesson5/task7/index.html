@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lesson 2</title>
-    <link rel="stylesheet" href="./../syle.css" />
+    <link rel="stylesheet" href="./../../syle.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,15 +20,26 @@
   </head>
   <body>
     <h1>lesson 5</h1>
-    <ol class="tasks">
-      <li><a href="./task-2/index.html" class="tasks">task -2</a></li>
-      <li><a href="./task-1/index.html" class="tasks">task -1</a></li>
-      <li><a href="./task0/index.html" class="tasks">task 0</a></li>
-      <li><a href="./task1/index.html" class="tasks">task 1</a></li>
-      <li><a href="./task2/index.html" class="tasks">task 2</a></li>
-      <li><a href="./task7/index.html" class="tasks">task 7</a></li>
-      <li><a href="./task12/index.html" class="tasks">task 12</a></li>
-    </ol>
+    <h3>task 7</h3>
+    <p class="tz">TT: Вивести на екран N абзаців (N вводиться користувачем)</p>
+    <script>
+      let paragraphsAmount = parseInt(
+        prompt("Введіть кількість абзаців", "10")
+      );
+      let titlesAmount = 1;
+      let sectionsAmount = 1;
+      let i = 0;
+      while (paragraphsAmount > i) {
+        document.write(`<h1>Заголовок ${titlesAmount}</h1>`);
+        for (let p = 0; p <= i; p++) {
+          document.write(`<p>Розділ${sectionsAmount}, параграф${p + 1}</p>`);
+        }
+        i++;
+        titlesAmount++;
+        sectionsAmount++;
+      }
+    </script>
+
     <a href="./../index.html"><h2>back</h2></a>
   </body>
 </html>

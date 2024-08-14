@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 5</h1>
+    <h3>task -2</h3>
+    <p class="tz">
+      TT: Поступово генерувати 100 випадкових чисел від 1 до 1000. Підрахувати
+      яких чисел більше парних чи непарних
+    </p>
+    <script>
+      let pairedNums = 0;
+      let noPairedNums = 0;
+      for (let nums = 0; nums < 100; nums++) {
+        let randomNumber = Math.floor(Math.random() * (1000 - 1 + 1)) + 1;
+        document.write(`${nums + 1} число: ${randomNumber} <br>`);
+        if (randomNumber % 2 === 0) pairedNums++;
+        else noPairedNums++;
+      }
+      document.write(
+        `Усього ми маемо парних чисел: ${pairedNums} та непарних: ${noPairedNums}<br>`
+      );
+      if (pairedNums > noPairedNums) {
+        document.write(`Тому парних чисел більше`);
+      } else if (pairedNums < noPairedNums) {
+        document.write(`Тому непарних чисел більше`);
+      } else {
+        document.write(`Тому парних та непарних чисел порівну`);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

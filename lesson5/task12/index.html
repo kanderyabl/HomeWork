@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 5</h1>
+    <h3>task 12</h3>
+    <p class="tz">
+      TT: Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у
+      кожній позиції вибирається як одне з чотирьох зображень. Вивести ці
+      зображення і повідомити виграш користувача (три перших зображення 100 грн,
+      три других – 200, три третіх – 500, три четвертих зображення – 1000грн).
+      Використати цикли і switch (для вибору зображення за номером).
+    </p>
+    <script>
+      let limonTimes = 0;
+      let orangeTimes = 0;
+      let cheryTimes = 0;
+      let bigWinTimes = 0;
+      let chery = "./pictures/chery.jpg";
+      let orange = "./pictures/orange.jpg";
+      let limon = "./pictures/limon.jpg";
+      let bigWin = "./pictures/big-win.jpg";
+      for (let resultPic = 0; resultPic < 3; resultPic++) {
+        let randomPicture = Math.floor(Math.random() * (4 - 1 + 1)) + 1;
+        let image;
+        switch (randomPicture) {
+          case 1:
+            image = chery;
+            cheryTimes++;
+            document.write(
+              `<img width="200" height="200" src="${image}" alt="">`
+            );
+            break;
+          case 2:
+            image = orange;
+            orangeTimes++;
+            document.write(
+              `<img width="200" height="200" src="${image}" alt="">`
+            );
+            break;
+          case 3:
+            image = limon;
+            limonTimes++;
+            document.write(
+              `<img width="200" height="200" src="${image}" alt="">`
+            );
+            break;
+          case 4:
+            image = bigWin;
+            bigWinTimes++;
+            document.write(
+              `<img width="200" height="200" src="${image}" alt="">`
+            );
+            break;
+        }
+      }
+      if (cheryTimes === 3) alert("Вітаю! ви вийграли 100 грн");
+      else if (orangeTimes === 3) alert("Вітаю! ви вийграли 200 грн");
+      else if (limonTimes === 3) alert("Вітаю! ви вийграли 500 грн");
+      else if (bigWinTimes === 3) alert("Вітаю! ви вийграли 1000 грн");
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
