@@ -27,47 +27,47 @@
     <script>
       if (confirm("Почати тестування?")) {
         let monthNum = parseInt(prompt("Введіть номер місяця", "1"));
-        let monthName;
         function getMonthName(monthNum) {
+          let monthName;
           switch (monthNum) {
             case 1:
-              return "Це січень";
+              monthName = "січень";
               break;
             case 2:
-              return "Це лютий";
+              monthName = "лютий";
               break;
             case 3:
-              return "Це березень";
+              monthName = "березень";
               break;
             case 4:
-              return "Це квітнь";
+              monthName = "квітнь";
               break;
             case 5:
-              return "Це травень";
+              monthName = "травень";
               break;
             case 6:
-              return "Це чрервень";
+              monthName = "чрервень";
               break;
             case 7:
-              return "Це липень";
+              monthName = "липень";
               break;
             case 8:
-              return "Це серпень";
+              monthName = "серпень";
               break;
             case 9:
-              return "Це вересень";
+              monthName = "вересень";
               break;
             case 10:
-              return "Це жовтень";
+              monthName = "жовтень";
               break;
             case 11:
-              return "Це листопад";
+              monthName = "листопад";
               break;
             case 12:
-              return "це грудень";
+              monthName = "грудень";
               break;
             default:
-              return "Введіть коректний номер";
+              monthName = "Введіть коректний номер";
           }
           return monthName;
         }
