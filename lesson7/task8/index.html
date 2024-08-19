@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 7</h1>
+    <h3>task 8</h3>
+    <p class="tz">
+      TT: Створити функцію, яка виводить банер, у функцію передаються:
+      зображення, заголовок та посилання, куди переходимо при кліку на
+      зображення, тег img повине знаходитись у середині тега a.
+    </p>
+
+    <script>
+      if (confirm("Почати тестування?")) {
+        let img = "./img.jpg";
+        let title = "BACK";
+        let hrefBanner = "./../index.html";
+        function ganarateBanner(img, title, hrefBanner) {
+          document.write(
+            `<a style="cursor: pointer; position: relative;" href=${hrefBanner}><img class="imageBanner" src=${img} alt="" />
+            <h3
+        style="font-size: 100px; position: absolute; top: -500px; left: 420px"
+        class="titleBanner">
+        ${title}
+      </h3>
+            </a>`
+          );
+        }
+        ganarateBanner(img, title, hrefBanner);
+      }
+    </script>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

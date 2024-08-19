@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 7</h1>
+    <h3>task 7</h3>
+    <p class="tz">
+      TT: Створити функцію, яка випадковим чином виводить на екран одне із 4
+      зображень (шляхи до зображень передаються у функцію)
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        let img1 = "./imgs/img1.jpg";
+        let img2 = "./imgs/img2.jpg";
+        let img3 = "./imgs/img3.jpg";
+        let img4 = "./imgs/img4.jpg";
+        function getRandomImg(img1, img2, img3, img4) {
+          let randomPic = 1 + Math.floor(Math.random() * (4 + 1 - 1));
+          switch (randomPic) {
+            case 1:
+              return img1;
+              break;
+            case 2:
+              return img2;
+              break;
+            case 3:
+              return img3;
+              break;
+            case 4:
+              return img4;
+              break;
+          }
+        }
+        let randomImage = getRandomImg(img1, img2, img3, img4);
+        document.write(`<img src="${randomImage}" alt="">`);
+      }
+    </script>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

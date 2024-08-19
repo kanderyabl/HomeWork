@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 7</h1>
+    <h3>task 1</h3>
+    <p class="tz">
+      TT: Створити функцію, яка за номером місяця повертає його назву.
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        let monthNum = parseInt(prompt("Введіть номер місяця", "1"));
+        let monthName;
+        function getMonthName(monthNum) {
+          switch (monthNum) {
+            case 1:
+              return "Це січень";
+              break;
+            case 2:
+              return "Це лютий";
+              break;
+            case 3:
+              return "Це березень";
+              break;
+            case 4:
+              return "Це квітнь";
+              break;
+            case 5:
+              return "Це травень";
+              break;
+            case 6:
+              return "Це чрервень";
+              break;
+            case 7:
+              return "Це липень";
+              break;
+            case 8:
+              return "Це серпень";
+              break;
+            case 9:
+              return "Це вересень";
+              break;
+            case 10:
+              return "Це жовтень";
+              break;
+            case 11:
+              return "Це листопад";
+              break;
+            case 12:
+              return "це грудень";
+              break;
+            default:
+              return "Введіть коректний номер";
+          }
+          return monthName;
+        }
+        monthName = getMonthName(monthNum);
+        document.write(`<p>${monthName}</p>`);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

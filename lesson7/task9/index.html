@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 7</h1>
+    <h3>task 9</h3>
+    <p class="tz">
+      TT: Дано покази температур (довільна кількість). Розробити функцію, яка
+      дозволить підрахувати кількість від’ємних показів температури.
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        let temp1 = -15,
+          temp2 = 2,
+          temp3 = -10,
+          temp4 = -5;
+        let howMayMinusTemps = (temp1, temp2, temp3, temp4) => {
+          let minusTemps = 0;
+          if (temp1 < 0) minusTemps++;
+          if (temp2 < 0) minusTemps++;
+          if (temp3 < 0) minusTemps++;
+          if (temp4 < 0) minusTemps++;
+          return minusTemps;
+        };
+        let temperaturesMinus = howMayMinusTemps(temp1, temp2, temp3, temp4);
+        console.log(temperaturesMinus);
+      }
+    </script>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

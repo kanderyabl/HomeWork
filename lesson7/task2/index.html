@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 7</h1>
+    <h3>task 2</h3>
+    <p class="tz">
+      TT: Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день
+      робочим.
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        let dayNum = parseInt(prompt("Ведіть номр дня", "1"));
+
+        function getWeekendOrWorkDay(dayNum) {
+          let dayType;
+          if (dayNum <= 0) dayType = "Введіть коректний номер";
+          else if (dayNum < 6) dayType = "Це робочій день";
+          else if (dayNum < 8) dayType = "Це вихідний";
+          else dayType = "Введіть коректний номер";
+          return dayType;
+        }
+        let day = getWeekendOrWorkDay(dayNum);
+        document.write(`<p>${day}</p>`);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

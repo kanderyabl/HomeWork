@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 7</h1>
+    <h3>task 4</h3>
+    <p class="tz">
+      TT: Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька
+      результатів: кількість парних, кількість додатних, кількість більших за
+      100.
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        let num1 = 10;
+        let num2 = 101;
+        let num3 = -20;
+        function howManyDuoHowManyPositiveHowManyMoreThanHundred(
+          num1,
+          num2,
+          num3
+        ) {
+          let howManyDuo = 0;
+          let howManyPositive = 0;
+          let howManyMoreThanHundred = 0;
+          if (num1 % 2 === 0) howManyDuo++;
+          if (num2 % 2 === 0) howManyDuo++;
+          if (num3 % 2 === 0) howManyDuo++;
+          if (num1 > 0) howManyPositive++;
+          if (num2 > 0) howManyPositive++;
+          if (num3 > 0) howManyPositive++;
+          if (num1 > 100) howManyMoreThanHundred++;
+          if (num2 > 100) howManyMoreThanHundred++;
+          if (num3 > 100) howManyMoreThanHundred++;
+          return (
+            "парних: " +
+            howManyDuo +
+            " " +
+            "додатних: " +
+            howManyPositive +
+            " " +
+            "більших за 100: " +
+            howManyMoreThanHundred +
+            " "
+          );
+        }
+        let returnFun = howManyDuoHowManyPositiveHowManyMoreThanHundred(
+          num1,
+          num2,
+          num3
+        );
+        document.write(`<p>${returnFun}</p>`);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
