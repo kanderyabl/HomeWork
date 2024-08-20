@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 8</h1>
+    <h3>task 2</h3>
+    <p class="tz">
+      TT: Дано масив, який зберігає кількість відвідувачів магазину протягом
+      тижня. Вивести на екран: <br />номери днів, протягом яких кількість
+      відвідувачів була меншою за 20; <br />номери днів, коли кількість
+      відвідувачів була мінімальною; <br />номери днів, коли кількість
+      відвідувачів була максимальною; <br />загальну кількість клієнтів у робочі
+      дні та окремо загальну кількість днів на вихідних.
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        //визначаємо рандомну кількость відвідувачів
+        function getRandomNumberVisiters(min, max) {
+          return min + Math.floor(Math.random() * (max - min + 1));
+        }
+        // генеруємо статистику відвідування за тиждень
+        function generateStatisticVisitedPerWeek() {
+          let statisticVisitedPerWeek = [];
+          for (let day = 0; day < 7; day++) {
+            const randomNuberVisiters = getRandomNumberVisiters(1, 100);
+            statisticVisitedPerWeek.push(randomNuberVisiters);
+          }
+          return statisticVisitedPerWeek;
+        }
+
+        // знаходимо дні в які відвідувачив було меньше за 20
+        function getNumsDaysWhenVisitersUnder20(statisticVisitedPerWeek) {
+          let days = [];
+          for (let day = 0; day < statisticVisitedPerWeek.length; day++) {
+            if (statisticVisitedPerWeek[day] < 20) days.push(day + 1);
+          }
+          return days;
+        }
+        // знаходимо номери днів, коли кількість відвідувачів була мінімальною
+        function getNumsOfDaysWithMinimumVisiters(statisticVisitedPerWeek) {
+          let numsOfDaysWithMinimumVisiters = [];
+          let minVisiters = Infinity;
+          for (
+            let numDay = 0;
+            numDay < statisticVisitedPerWeek.length;
+            numDay++
+          ) {
+            if (statisticVisitedPerWeek[numDay] < minVisiters) {
+              numsOfDaysWithMinimumVisiters = [numDay + 1];
+              minVisiters = statisticVisitedPerWeek[numDay];
+            } else if (statisticVisitedPerWeek[numDay] === minVisiters) {
+              numsOfDaysWithMinimumVisiters.push(numDay);
+            }
+          }
+          return numsOfDaysWithMinimumVisiters;
+        }
+        // знаходимо номери днів, коли кількість відвідувачів була максимальною
+        function getNumsOfDaysWithMaximumVisiters(statisticVisitedPerWeek) {
+          let numsOfDaysWithMaximumVisiters = [];
+          let maxVisiters = 0;
+          for (
+            let numDay = 0;
+            numDay < statisticVisitedPerWeek.length;
+            numDay++
+          ) {
+            if (statisticVisitedPerWeek[numDay] > maxVisiters) {
+              numsOfDaysWithMaximumVisiters = [numDay + 1];
+              maxVisiters = statisticVisitedPerWeek[numDay];
+            } else if (statisticVisitedPerWeek[numDay] === maxVisiters)
+              numsOfDaysWithMaximumVisiters.push(numDay);
+          }
+          return numsOfDaysWithMaximumVisiters;
+        }
+        //знаходимо загальну кількость відвідувачів у робочі дні
+        function getTotalNumberVisitersAtWorkDays(statisticVisitedPerWeek) {
+          let totalNumberVisitersAtWorkDays = 0;
+          for (let day = 0; day < statisticVisitedPerWeek.length - 2; day++) {
+            totalNumberVisitersAtWorkDays += statisticVisitedPerWeek[day];
+          }
+          return totalNumberVisitersAtWorkDays;
+        }
+        //знаходимо загальну кількость відвідувачів у вихідні дні
+        function getTotalNumberVisitersAtWeekendsDays(statisticVisitedPerWeek) {
+          let totalNumberVisitersAtWeekendsDays = 0;
+          for (let day = 5; day < statisticVisitedPerWeek.length; day++) {
+            totalNumberVisitersAtWeekendsDays += statisticVisitedPerWeek[day];
+          }
+          return totalNumberVisitersAtWeekendsDays;
+        }
+        const statisticVisitedPerWeek = generateStatisticVisitedPerWeek();
+        document.write(
+          `<p>кількість відвідувачив протягом тижня: ${statisticVisitedPerWeek}</p>`
+        );
+        document.write(
+          `<p>дні в які відвідувачив було меньше за 20: ${getNumsDaysWhenVisitersUnder20(
+            statisticVisitedPerWeek
+          )}</p>`
+        );
+        document.write(
+          `<p>номери днів, коли кількість відвідувачів була мінімальною: ${getNumsOfDaysWithMinimumVisiters(
+            statisticVisitedPerWeek
+          )}</p>`
+        );
+        document.write(
+          `<p>номери днів, коли кількість відвідувачів була максимальною: ${getNumsOfDaysWithMaximumVisiters(
+            statisticVisitedPerWeek
+          )}</p>`
+        );
+        document.write(
+          `<p>загальнa кількость відвідувачів у робочі дні: ${getTotalNumberVisitersAtWorkDays(
+            statisticVisitedPerWeek
+          )}</p>`
+        );
+        document.write(
+          `<p>загальнa кількость відвідувачів у вихідні дні: ${getTotalNumberVisitersAtWeekendsDays(
+            statisticVisitedPerWeek
+          )}</p>`
+        );
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

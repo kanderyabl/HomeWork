@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 8</h1>
+    <h3>task 8</h3>
+    <p class="tz">
+      TT: Дано одновимірний масив, у якому зберігається певна виграшна сума
+      (елементи заповнюються випадковим чином значеннями від -500 до 500).
+      Надаючи користувачу можливість вибирати номери елементів (поки він не
+      відмовиться). Знаходити сумарний виграш.
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        function getRandomNumber(min, max) {
+          return min + Math.floor(Math.random() * (max - min + 1));
+        }
+        function ganerateSlots(howMuch) {
+          let slots = [];
+          for (let slot = 0; slot < howMuch; slot++) {
+            slots.push(getRandomNumber(-500, 500));
+          }
+          return slots;
+        }
+        function checkPrize(userPic, slots, balance, historyTrys) {
+          historyTrys.push(slots[userPic - 1]);
+          return balance + slots[userPic - 1];
+        }
+        function showResult(balance, history) {
+          document.write(`<p>історія гри: </p>`);
+          for (let trys = 0; trys < history.length; trys++) {
+            document.write(`<p>${history[trys]} грн</p>`);
+          }
+          document.write(`<p>Сумарний вийграш: ${balance} грн</p>`);
+        }
+        function startGame() {
+          let balance = 0;
+          const slots = ganerateSlots(10);
+          let userPic;
+          let historyTrys = [];
+          while (userPic !== 0) {
+            userPic = parseInt(
+              prompt(
+                "Введіть номер слота(1-10), введіть '0' якщо хочите закінчити гру та переглянути баланс",
+                ""
+              )
+            );
+            if (userPic !== 0)
+              balance = checkPrize(userPic, slots, balance, historyTrys);
+          }
+          showResult(balance, historyTrys);
+        }
+        startGame();
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 8</h1>
+    <h3>task 9</h3>
+    <p class="tz">
+      TT: Морський бій. Користувач вводить кількість клітинок одновимірного
+      масиву та кількість одиночних кораблів. Комп’ютер довільно розміщує ці
+      одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то
+      клітинка пуста, якщо 1 – то це означає, що там є корабель.) Користувач
+      вводить номер клітинки, куди стріляє. Гра продовжується до тих пір, поки
+      не будуть потоплені усі кораблі.
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        function getRandomNumber(min, max) {
+          return min + Math.floor(Math.random() * (max - min + 1));
+        }
+        function generateTableForSeaBattle() {
+          let tableForSeaBattle = [];
+          for (let section = 0; section < 30; section++) {
+            tableForSeaBattle.push(getRandomNumber(0, 1));
+          }
+          return tableForSeaBattle;
+        }
+        function checkShot(userShot, tableForSeaBattle) {
+          let resul;
+          switch (tableForSeaBattle[userShot]) {
+            case 1:
+              resul = 1;
+              break;
+
+            default:
+              resul = 0;
+          }
+          return resul;
+        }
+        function checkHowMayShipsInTable(tableForSeaBattle) {
+          let shepsAmt = 0;
+          for (let section = 0; section < tableForSeaBattle.length; section++) {
+            if (tableForSeaBattle[section] === 1) shepsAmt++;
+          }
+          return shepsAmt;
+        }
+        function startGame() {
+          const tableForSeaBattle = generateTableForSeaBattle();
+          let shepsAmt = checkHowMayShipsInTable(tableForSeaBattle);
+          let trys = 0;
+          console.log(shepsAmt);
+          while (shepsAmt > 0) {
+            let userShot = parseInt(
+              prompt("Виберіть ячейку в котру хочете вистрілити(1-30)", "2")
+            );
+            let resul = checkShot(userShot, tableForSeaBattle);
+            if (resul === 1) {
+              shepsAmt--;
+              trys++;
+              tableForSeaBattle[userShot] = 2;
+              alert(`Влучили!`);
+            } else {
+              trys++;
+              alert(`Промах`);
+            }
+          }
+          alert(`Ви знищіли усі коралі за ${trys} спроб(и)`);
+        }
+        startGame();
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

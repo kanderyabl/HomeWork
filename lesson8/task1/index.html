@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 8</h1>
+    <h3>task 1</h3>
+    <p class="tz">
+      TT: Дано масив, який містить оцінки з К предметів. Знайти середній бал і
+      з’ясувати до якої категорії він відноситься (відмінник, двійочник (має
+      хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча
+      би одна трійка)).
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        // ввести кількість предметів та оцінки за них
+        function getNumbersLessonsAndGrades() {
+          const lessonsNumber = parseInt(
+            prompt("Введіть кількість предметів", "10")
+          );
+          let grades = [];
+          for (let lesson = 0; lesson < lessonsNumber; lesson++) {
+            let grade = parseInt(
+              prompt(
+                `Введіть оцінку по п'яти бальній сістемі для ${
+                  lesson + 1
+                } предмету`,
+                "5"
+              )
+            );
+            grades.push(grade);
+          }
+          return grades;
+        }
+        // знаходимо середній бал
+        function getMidleGrade(lessonsgrades) {
+          let sumGrades = 0;
+          for (let lesson = 0; lesson < lessonsgrades.length; lesson++) {
+            sumGrades += lessonsgrades[lesson];
+          }
+          return sumGrades / lessonsgrades.length;
+        }
+        // знаходимо хто цей учень(відмінник, двійочник (має
+        // хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча
+        // би одна трійка))
+        function getGlobalGradeStudent(lessonsgrades) {
+          let studentA = 0; // відмінник
+          let studentB = 0; // хорошист
+          let studentC = 0; // трійочник
+          let studentF = 0; // двійочник
+          for (
+            let lessonGrade = 0;
+            lessonGrade < lessonsgrades.length;
+            lessonGrade++
+          ) {
+            let grade = lessonsgrades[lessonGrade];
+            if (grade === 1 || grade === 2) studentF++;
+            else if (grade === 3) studentC++;
+            else if (grade === 4) studentB++;
+            else if (grade === 5) studentA++;
+          }
+          let globalGrade;
+          if (studentF > 0) globalGrade = "двійочник";
+          else if (studentC > 0) globalGrade = "трійочник";
+          else if (studentB > 0) globalGrade = "хорошист";
+          else if (studentA > 0) globalGrade = "відмінник";
+          return globalGrade;
+        }
+        // запускаємо функції
+        const lessonsgrades = getNumbersLessonsAndGrades();
+        document.write(`<p>Середній бал: ${getMidleGrade(lessonsgrades)}</p>`);
+        document.write(`<p>Учень: ${getGlobalGradeStudent(lessonsgrades)}</p>`);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

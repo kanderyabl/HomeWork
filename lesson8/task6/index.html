@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 8</h1>
+    <h3>task 6</h3>
+    <p class="tz">
+      TT: Дано послідовність цін товарів та назв (у окремих масивах). Вивести на
+      екран ті, які може собі дозволити користувач (кількість грошей задається).
+    </p>
+    <img src="./img.png" alt="" />
+    <script>
+      if (confirm("Почати тестування?")) {
+        const prodPrice = [100, 1000, 2345, 50, 983, 10000, 21245, 300000, 0.2];
+        const prodName = [
+          "сир",
+          "блендер",
+          "міксер",
+          "хліб",
+          "навушники",
+          "Samsung A50",
+          "Iphone 13 pro",
+          "Автомобіль",
+          "сірники",
+        ];
+        let balance = parseFloat(prompt("Ввдіть скільки у вас грошей", "1000"));
+        let canBuy = [];
+        for (let product = 0; product < prodPrice.length; product++) {
+          if (balance > prodPrice[product]) canBuy.push(product);
+        }
+        document.write(`<p>Ваш баланс: ${balance} грн</p>`);
+        if (canBuy.langht !== 0) {
+          document.write(`<p>Ви можете собі дозволити: </p>`);
+          for (let buy = 0; buy < canBuy.length; buy++) {
+            document.write(
+              `<p>${prodName[canBuy[buy]]} ---- ${
+                prodPrice[canBuy[buy]]
+              } грн</p>`
+            );
+          }
+        } else document.write(`<p>Ви нічого не можете собі дозволити;(</p>`);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
