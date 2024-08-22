@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 9</h1>
+    <h3>task 6</h3>
+    <p class="tz">
+      TT: Дано масив елементів. Усі елементи, які більші за перший елемент
+      помножити на 2
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        function getRandomNumber(min, max) {
+          return min + Math.floor(Math.random() * (max - min + 1));
+        }
+        let arr = [];
+        amtElements = parseInt(prompt("введіть кількість елемнтів", "10"));
+        for (let i = 0; i < amtElements; i++) {
+          arr.push(getRandomNumber(1, 50));
+        }
+        console.log();
+        for (const iterator of arr) {
+          if (iterator > arr[0]) console.log(iterator * 2);
+        }
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

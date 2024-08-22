@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 9</h1>
+    <h3>task 8</h3>
+    <p class="tz">
+      TT: Дано масив номерів авто. Сформувати новий масив тих, які починаються
+      на «А»
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        function getRandomNumber(min, max) {
+          return min + Math.floor(Math.random() * (max - min + 1));
+        }
+        function getRandomLiter(fromLiter, toLiter) {
+          let min = fromLiter.charCodeAt();
+          let max = toLiter.charCodeAt();
+          return String.fromCharCode(
+            min + Math.floor(Math.random() * (max - min + 1))
+          );
+        }
+        function ganerateRandomCarNum() {
+          let randomCarNum = "";
+          for (let NumSimvol = 1; NumSimvol <= 8; NumSimvol++) {
+            if (NumSimvol <= 2 || NumSimvol >= 7)
+              randomCarNum += getRandomLiter("A", "C");
+            else randomCarNum += getRandomNumber(0, 9);
+          }
+          return randomCarNum;
+        }
+        let howMuchNums = parseInt(
+          prompt("Введіть загальну кількість номерів авто", "10")
+        );
+        function ganerateRandomsCarsNums(howMuchNums) {
+          let randomsCarsNums = [];
+          for (let numCar = 0; numCar < howMuchNums; numCar++) {
+            randomsCarsNums.push(ganerateRandomCarNum());
+          }
+          return randomsCarsNums;
+        }
+        let randomsCarsNums = ganerateRandomsCarsNums(howMuchNums);
+        let numsWhosStartFromA = [];
+        // function getNumsWhosStartFromA(randomsCarsNums) {
+
+        //   for (let num = 0; num < randomsCarsNums.length; num++) {
+        //     if (randomsCarsNums[num][0] === "A")
+        //       numsWhosStartFromA.push(randomsCarsNums[num]);
+        //   }
+        //   return numsWhosStartFromA;
+        // }
+        randomsCarsNums.forEach((element) => {
+          if (element[0] === "A") numsWhosStartFromA.push(element);
+        });
+        // let numsWhosStartFromA = getNumsWhosStartFromA(randomsCarsNums);
+        console.log(numsWhosStartFromA);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
