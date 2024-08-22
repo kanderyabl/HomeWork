@@ -33,11 +33,11 @@
         let arr = [];
         amtElements = parseInt(prompt("введіть кількість елемнтів", "10"));
         for (let i = 0; i < amtElements; i++) {
-          arr.push(getRandomNumber(1, 50));
+          arr.push(getRandomNumber(1, 100));
         }
         console.log();
         for (const iterator of arr) {
-          if (iterator > arr[0]) console.log(iterator * 2);
+          if (iterator > arr[0]*2) console.log(iterator);
         }
       }
     </script>
