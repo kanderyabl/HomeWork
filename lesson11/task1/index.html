@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 11</h1>
+    <h3>task 1</h3>
+    <p class="tz">
+      TT: Знайти суми елементів у вказаній області (зафарбована область охоплює
+      відповідну половину рядків і стовпців)
+    </p>
+    <img src="./img/randarray.png" alt="" />
+    <script>
+      randArr = [
+        [3, 4, 2, 2, 0, 7],
+        [6, 7, 9, 7, 9, 4],
+        [2, 6, 6, 1, 6, 6],
+        [0, 8, 6, 0, 5, 7],
+        [1, 0, 0, 2, 2, 5],
+        [5, 3, 3, 8, 8, 4],
+      ];
+      function getSumElIn2Darray(
+        arr,
+        startX,
+        endX,
+        startY,
+        endY,
+        stepX,
+        stepY
+      ) {
+        let sum = 0;
+        for (let row = startX; row < endX; row += stepX) {
+          for (let column = startY; column < endY; column += stepY) {
+            sum += arr[row][column];
+          }
+        }
+        return sum;
+      }
+      //-------------------------------------------------------------------------------------
+      document.write(
+        `<p class="tz">1) номери рядків від 0 до половини, стовпці від 0 до половини</p>`
+      );
+      document.write(`<img src="./img/img1.png" alt="" />`);
+      let sumLeftUpHalf = getSumElIn2Darray(randArr, 0, 3, 0, 3, 1, 1);
+      document.write(`<p>${sumLeftUpHalf}</p>`);
+      //-------------------------------------------------------------------------------------
+      document.write(
+        `<p class="tz">2)номери рядків від 0 до половини, стовпці від половини до кінця</p>`
+      );
+      document.write(`<img src="./img/img2.png" alt="" />`);
+      let sumRightUpHalf = getSumElIn2Darray(randArr, 0, 3, 3, 6, 1, 1);
+      document.write(`<p>${sumRightUpHalf}</p>`);
+      //-------------------------------------------------------------------------------------
+      document.write(
+        `<p class="tz">3)номери рядків від половини до кінця, стовпці від 0 до половини</p>`
+      );
+      document.write(`<img src="./img/img3.png" alt="" />`);
+      let sumLeftDownHalf = getSumElIn2Darray(randArr, 3, 6, 0, 3, 1, 1);
+      document.write(`<p>${sumLeftDownHalf}</p>`);
+      //-------------------------------------------------------------------------------------
+      document.write(
+        `<p class="tz">4)номери рядків від половини до кінця , стовпці від половини до кінця</p>`
+      );
+      document.write(`<img src="./img/img4.png" alt="" />`);
+      let sumRightDownHalf = getSumElIn2Darray(randArr, 3, 6, 3, 6, 1, 1);
+      document.write(`<p>${sumRightDownHalf}</p>`);
+      //-------------------------------------------------------------------------------------
+      document.write(`<p class="tz">5)Суму парних рядків</p>`);
+      let sumPairsRows = getSumElIn2Darray(randArr, 1, 6, 0, 6, 2, 1);
+      document.write(`<p>${sumPairsRows}</p>`);
+      //-------------------------------------------------------------------------------------
+      document.write(`<p class="tz">6) Суму непарних стовпців</p>`);
+      let sumNoPairsColumns = getSumElIn2Darray(randArr, 0, 6, 0, 6, 1, 2);
+      document.write(`<p>${sumNoPairsColumns}</p>`);
+      //-------------------------------------------------------------------------------------
+      document.write(
+        `<p class="tz">7) У парних рядках – непарні стовпці, у непарних – парні</p>`
+      );
+      let sumNoPairsColumnsInPairsRows = getSumElIn2Darray(
+        randArr,
+        1,
+        6,
+        0,
+        6,
+        2,
+        2
+      );
+      let sumPairsColumnsInNoPairsRows = getSumElIn2Darray(
+        randArr,
+        0,
+        6,
+        1,
+        6,
+        2,
+        2
+      );
+      document.write(`<p>${sumNoPairsColumnsInPairsRows}</p>`);
+      document.write(`<p>${sumPairsColumnsInNoPairsRows}</p>`);
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 11</h1>
+    <h3>task 3</h3>
+    <p class="tz">
+      TT: Морський бій. Випадковим чином на двовимірному полі розміром 6*6
+      розташовується 5 кораблів. Користувач стріляє вказуючи координати. Гра
+      продовжується поки не потоплено усі кораблі або у користувача не
+      закінчаться снаряди.
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        function getRandomNumber(min, max) {
+          return min + Math.floor(Math.random() * (max - min + 1));
+        }
+        function generateFieldForGame() {
+          let fieldForGame = Array.from({ length: 6 }, () =>
+            new Array(6).fill(0)
+          );
+          for (let ship = 0; ship < 5; ship++) {
+            let y = getRandomNumber(0, 5);
+            let x = getRandomNumber(0, 5);
+            fieldForGame[y][x] = 1;
+          }
+          return fieldForGame;
+        }
+        let numberShells = 15;
+        let numberShips = 5;
+        function makekHit() {
+          let userChoise = [];
+          if (numberShells > 0) {
+            userChoise.push(
+              parseInt(
+                prompt(
+                  `патронів: ${numberShells} Введіть координату Y(1-6):`,
+                  "2"
+                )
+              )
+            );
+            userChoise.push(
+              parseInt(
+                prompt(
+                  `патронів: ${numberShells} Введіть координату X(1-6):`,
+                  "3"
+                )
+              )
+            );
+          } else alert("нажаль у вас закінчилися патрони :(");
+          return userChoise;
+        }
+        function checkHit(userHit, field) {
+          if (field[userHit[0]][userHit[1]] === 1) {
+            field[userHit[0]][userHit[1]] = 2;
+            alert("Ви влучили! корабль знищено!");
+            numberShells--;
+            numberShips--;
+          } else if (field[userHit[0]][userHit[1]] === 2) {
+            alert("Ви вже стріляли сюди");
+          } else {
+            alert("Ви промазали :(");
+            field[userHit[0]][userHit[1]] = 2;
+            numberShells--;
+          }
+        }
+        function startGame() {
+          let fieldForGame = generateFieldForGame();
+          while (numberShells > 0 && numberShips > 0) {
+            let userChoise = makekHit(numberShells);
+            checkHit(userChoise, fieldForGame, numberShells, numberShips);
+            if (numberShips <= 0) {
+              document.write(`<p>Ви знищіли усі кораблі!</p>`);
+            } else if (numberShells <= 0)
+              document.write(`<p>У вас закінчилися патрони :(</p>`);
+          }
+        }
+        startGame();
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
