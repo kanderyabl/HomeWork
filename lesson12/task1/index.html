@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 12</h1>
+    <h3>task 1</h3>
+    <p class="tz">
+      TT: Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів
+      та порівнянь чисел під час сортування бульбашкою
+    </p>
+    <script>
+      //======== functions =================
+      function getRandomNumber(min, max) {
+        return min + Math.floor(Math.random() * (max - min + 1));
+      }
+      //---------------------------------------
+      function generateRandomArray(elNumber) {
+        let randArray = [];
+        for (let el = 0; el < elNumber; el++) {
+          let randNum = getRandomNumber(1, 100);
+          randArray.push(randNum);
+        }
+        return randArray;
+      }
+      //---------------------------------------
+      function getNumberSwapAndCompareAfterBubbleSort(arr) {
+        let changed;
+        let swap = 0;
+        let compare = 0;
+        do {
+          changed = false;
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > arr[i + 1]) {
+              let tmp = arr[i + 1];
+              arr[i + 1] = arr[i];
+              arr[i] = tmp;
+              changed = true;
+              swap++;
+              compare++;
+            } else compare++;
+          }
+        } while (changed);
+        return [swap, compare];
+      }
+      // ---------------------------------------
+      let randArr = generateRandomArray(30);
+      let swapAndCompare = getNumberSwapAndCompareAfterBubbleSort(randArr);
+      document.write(
+        `обмінів ${swapAndCompare[0]}, порівнянь ${swapAndCompare[1]}`
+      );
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 12</h1>
+    <h3>task 6</h3>
+    <p class="tz">
+      TT: Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук
+      визначити, чи є у масиві ім’я довжиною 5 символів і під яким індексом.
+    </p>
+
+    <script>
+      let names = [
+        "John",
+        "Alex",
+        "Olga",
+        "Sophia",
+        "Michael",
+        "Emma",
+        "Liam",
+        "Noah",
+        "Ava",
+        "Isabella",
+        "James",
+        "Mia",
+        "Ethan",
+        "Lucas",
+        "Charlotte",
+        "Amelia",
+        "Harper",
+        "Evelyn",
+        "Abigail",
+        "Benjamin",
+        "Elijah",
+        "Mason",
+        "Logan",
+        "Oliver",
+        "Jacob",
+        "William",
+        "Henry",
+        "Alexander",
+        "Daniel",
+        "Maria",
+      ];
+      names.sort((name1, name2) => {
+        return name1.length - name2.length;
+      });
+      function lookNameByLength(arr, nameLength) {
+        let left = 0;
+        let right = arr.length - 1;
+        while (left <= right) {
+          let mid = Math.floor((left + right) / 2);
+          if (arr[mid].length === nameLength) return mid;
+          else if (arr[mid].length < nameLength) {
+            left = mid + 1;
+          } else if (arr[mid].length > nameLength) {
+            right = mid - 1;
+          }
+        }
+        return "Єлемента з такою довжиною немає";
+      }
+      let res = lookNameByLength(names, 5);
+      console.log(res, names);
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

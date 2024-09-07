@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 12</h1>
+    <h3>task 5</h3>
+    <p class="tz">
+      TT: Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук
+      визначити, чи є у масиві ім’я «Olga» і під яким індексом.
+    </p>
+
+    <script>
+      let names = [
+        "John",
+        "Maria",
+        "Alex",
+        "Olga",
+        "Sophia",
+        "Michael",
+        "Emma",
+        "Noah",
+        "Ava",
+        "Isabella",
+        "James",
+        "Mia",
+        "Ethan",
+        "Lucas",
+        "Charlotte",
+        "Amelia",
+        "Harper",
+        "Evelyn",
+        "Abigail",
+        "Benjamin",
+        "Elijah",
+        "Mason",
+        "Logan",
+        "Oliver",
+        "Jacob",
+        "William",
+        "Henry",
+        "Alexander",
+        "Daniel",
+        "Liam",
+      ];
+      names.sort();
+      // names.sort((name1, name2) => {
+      //   let name1sum = 0;
+      //   let name2sum = 0;
+      //   for (let letter = 0; letter < name1.length; letter++) {
+      //     name1sum += name1.charCodeAt(letter);
+      //   }
+      //   for (let letter = 0; letter < name2.length; letter++) {
+      //     name2sum += name2.charCodeAt(letter);
+      //   }
+      //   return name1sum - name2sum;
+      // });
+      let name = "Olga";
+      function lookNameWithBinarySearch(arr, name) {
+        // searchedNameCharCode = 0;
+        // for (
+        //   let letterSearchedName = 0;
+        //   letterSearchedName < name.length;
+        //   letterSearchedName++
+        // ) {
+        //   searchedNameCharCode += name.charCodeAt(letterSearchedName);
+        // }
+        let left = 0;
+        let right = arr.length - 1;
+        while (left <= right) {
+          let mid = Math.floor((left + right) / 2);
+          // let checkNameCharCode = 0;
+          // for (
+          //   let letterCheckName = 0;
+          //   letterCheckName < arr[mid].length;
+          //   letterCheckName++
+          // ) {
+          //   checkNameCharCode += arr[mid].charCodeAt(letterCheckName);
+          // }
+          // if (checkNameCharCode === searchedNameCharCode) return mid;
+          // else if (checkNameCharCode < searchedNameCharCode) {
+          //   left = mid + 1;
+          //   checkNameCharCode = 0;
+          // } else if (checkNameCharCode > searchedNameCharCode) {
+          //   right = mid - 1;
+          //   checkNameCharCode = 0;
+          // } else return "Єлемент не знайдено";
+          if (arr[mid] === name) return mid;
+          else if (arr[mid] < name) {
+            left = mid + 1;
+            checkNameCharCode = 0;
+          } else if (arr[mid] > name) {
+            right = mid - 1;
+            // checkNameCharCode = 0;
+          }
+        }
+        return "Єлемент не знайдено";
+      }
+      let res = lookNameWithBinarySearch(names, name);
+      console.log(res, names);
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

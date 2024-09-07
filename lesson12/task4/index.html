@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 12</h1>
+    <h3>task 4</h3>
+    <p class="tz">
+      TT: Для розглянутих методів сортування спробувати вивести етапи сортування
+      шляхом виведення відповідних таблиць за зразком .
+    </p>
+    <img src="./img.png" alt="" />
+    <p class="tz">
+      Тобто кожного разу після обміну елементів вивести поточний стан масиву на
+      екран (стрілки не потрібні).
+    </p>
+
+    <script>
+      //======== functions =================
+      function getRandomNumber(min, max) {
+        return min + Math.floor(Math.random() * (max - min + 1));
+      }
+      //---------------------------------------
+      function generateRandomArray(elNumber) {
+        let randArray = [];
+        for (let el = 0; el < elNumber; el++) {
+          let randNum = getRandomNumber(1, 100);
+          randArray.push(randNum);
+        }
+        return randArray;
+      }
+      //---------------------------------------
+      function getNumberSwapAndCompareAfterInsertionSort(arr) {
+        let key, i;
+        for (let k = 1; k < arr.length; k++) {
+          key = arr[k];
+          i = k - 1;
+          while (i >= 0 && arr[i] > key) {
+            arr[i + 1] = arr[i];
+            i = i - 1;
+          }
+          arr[i + 1] = key;
+          let resSwap = [...arr];
+          document.write(`${resSwap} <br><br>`);
+        }
+      }
+
+      let randArray = generateRandomArray(30);
+      document.write(`початковий массив ${randArray} <br><br>`);
+      getNumberSwapAndCompareAfterInsertionSort(randArray);
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
