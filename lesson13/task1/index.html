@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 13</h1>
+    <h3>task 1</h3>
+    <p class="tz">
+      TT: Генерація всіх підмножин: Реалізуйте рекурсивну функцію, яка генерує
+      всі можливі підмножини заданого масиву.
+    </p>
+    <script>
+      let arr = [1, 2, 3, 4, 5];
+      function getSubsets(set) {
+        if (set.length === 0) {
+          return [[]];
+        }
+        let firstEl = set[0];
+        let rest = set.slice(1);
+        let subsetsWithoutFirst = getSubsets(rest);
+        let subsetsWithFirst = subsetsWithoutFirst.map((subset) => [
+          firstEl,
+          ...subset,
+        ]);
+        return [...subsetsWithoutFirst, ...subsetsWithFirst];
+      }
+      console.log(getSubsets(arr));
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

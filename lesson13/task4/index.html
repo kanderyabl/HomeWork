@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 13</h1>
+    <h3>task 4</h3>
+    <p class="tz">
+      Дано масив хлопців і дівчат вивести всі можливі комбінації для танців з
+      хлопців і дівчат.
+    </p>
+    <script>
+      let femaleNames = ["Emma", "Olivia", "Ava", "Sophia", "Isabella"];
+      let maleNames = ["Liam", "Noah", "William", "James", "Oliver"];
+      function getDancePairs(females, males) {
+        let pairs = [];
+        function generateDancePairs(currentPairs, femaleNames, maleNames) {
+          if (femaleNames.length === 0) {
+            pairs.push(currentPairs);
+            return;
+          }
+          for (let i = 0; i < maleNames.length; i++) {
+            let newPairs = currentPairs.concat([
+              [femaleNames[0], maleNames[i]],
+            ]);
+            let newFemalesNames = femaleNames.slice(1);
+            let newMalesNames = maleNames
+              .slice(0, i)
+              .concat(maleNames.slice(i + 1));
+            generateDancePairs(newPairs, newFemalesNames, newMalesNames);
+          }
+        }
+        generateDancePairs([], femaleNames, maleNames);
+        return pairs;
+      }
+      let allVariantsPairs = getDancePairs(femaleNames, maleNames);
+      console.log(allVariantsPairs);
+    </script>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

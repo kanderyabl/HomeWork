@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 13</h1>
+    <h3>task 8</h3>
+    <p class="tz">
+      При старті питаємо у користувача чи хоче він читати новини. Якщо так, то
+      одразу переходимо до сайту Ukr.Net, якщо ні, то через 20 секунд самі
+      переходимо на сайт ukr.net.
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        function openUkrNet() {
+          window.location.href = "https://www.ukr.net/";
+        }
+        if (confirm("чи хочешь читати новини")) {
+          openUkrNet();
+        } else {
+          setTimeout(openUkrNet, 20000);
+        }
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

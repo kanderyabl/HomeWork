@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 13</h1>
+    <h3>task 7</h3>
+    <p class="tz">
+      Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад
+      з додавання двох цифр і робиться перевірка.
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        function getRandomNumber(min, max) {
+          return min + Math.floor(Math.random() * (max - min + 1));
+        }
+        function sumTrain() {
+          let firstNum = getRandomNumber(1, 100);
+          let secondNum = getRandomNumber(1, 100);
+          let userAnswer = parseInt(
+            prompt(`Введіть сумму ${firstNum} та ${secondNum}`)
+          );
+          if (userAnswer === firstNum + secondNum) {
+            alert("Відмінно!");
+          } else {
+            alert(`Невірно :( сумма дорімнює: ${firstNum + secondNum}`);
+          }
+        }
+        let startTrain = setInterval(sumTrain, 10000);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

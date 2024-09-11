@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 13</h1>
+    <h3>task 6</h3>
+    <p class="tz">
+      З використанням замикань розробити ітератор, тобто функцію, що буде
+      поступово за окремими викликами видавати по одну букву наперед заданого
+      слова. З використанням нього розробити гру «Прекладач». Виводимо для
+      користувача опис цього слова і по одну букву користувач вводить переклад
+      цього слова. Підрахувати кількість вгаданих букв.
+    </p>
+    <script>
+      if (confirm("Почати тестування?")) {
+        let hiddenWord = "friend";
+        function hiddenWordIndex(hiddenWord) {
+          let letterIndex = 0;
+          return function () {
+            if (letterIndex === hiddenWord.length) {
+              return -1;
+            } else {
+              letterIndex++;
+              return letterIndex;
+            }
+          };
+        }
+        function gameTranslator(hiddenWord) {
+          alert(
+            "вам потрібно за описом слова вагадати його на англійскій мові"
+          );
+          alert(
+            "це людина, з якою ми ділимося своїми радощами та переживаннями, з якою можемо відверто говорити на будь-яку тему. Він підтримує нас у скрутних життєвих ситуаціях та допомагає знайти вихід із складних ситуацій"
+          );
+          let guessingLetters = 0;
+          let indexLetter = hiddenWordIndex(hiddenWord);
+          let letterIndex = indexLetter();
+
+          do {
+            let guessingLetter = prompt(
+              `Ввдіть ${letterIndex} літеру:`
+            ).toLowerCase();
+            if (guessingLetter === hiddenWord[letterIndex - 1])
+              guessingLetters++;
+            letterIndex = indexLetter();
+          } while (letterIndex !== -1);
+          alert(
+            `Слово було: ${hiddenWord} вгаданних літер: ${guessingLetters}`
+          );
+        }
+        gameTranslator(hiddenWord);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
