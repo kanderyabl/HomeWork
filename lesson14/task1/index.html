@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 14</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 14</h1>
+    <h3>task 1</h3>
+    <p class="tz">
+      TT:Описати масив об’єктів – сайтів розроблених компанією з такими
+      властивостями
+    </p>
+    <img src="./img.png" alt="" />
+    <p class="tz">Знайти:</p>
+    <script>
+      const websites = [
+        {
+          companyName: "Tech Innovators",
+          owner: "Олександр Іванов",
+          sponsors: [
+            { lastName: "Петров", firstName: "Іван", investment: 50000 },
+            { lastName: "Сидоренко", firstName: "Марія", investment: 30000 },
+          ],
+          releaseYear: 2021,
+          cost: 150000,
+        },
+        {
+          companyName: "Web Solutions",
+          owner: "Наталія Коваль",
+          sponsors: [
+            { lastName: "Кузьменко", firstName: "Олег", investment: 70000 },
+            { lastName: "Лисенко", firstName: "Анна", investment: 45000 },
+          ],
+          releaseYear: 2022,
+          cost: 200000,
+        },
+        {
+          companyName: "Digital Dreams",
+          owner: "Ігор Смирнов",
+          sponsors: [
+            { lastName: "Мельник", firstName: "Олексій", investment: 60000 },
+            { lastName: "Кравченко", firstName: "Олена", investment: 40000 },
+          ],
+          releaseYear: 2023,
+          cost: 180000,
+        },
+        {
+          companyName: "Innovative Web",
+          owner: "Марія Шевченко",
+          sponsors: [
+            { lastName: "Бондаренко", firstName: "Дмитро", investment: 80000 },
+            { lastName: "Гончар", firstName: "Ірина", investment: 50000 },
+          ],
+          releaseYear: 2024,
+          cost: 220000,
+        },
+        {
+          companyName: "Budget Sites",
+          owner: "Олег Петров",
+          sponsors: [
+            { lastName: "Іванов", firstName: "Сергій", investment: 2000 },
+            { lastName: "Коваль", firstName: "Олена", investment: 3000 },
+          ],
+          releaseYear: 2020,
+          cost: 9000,
+        },
+      ];
+      //============================================================================
+      document.write('<p class="tz">1) загальну вартість усіх сайтів</p>');
+      function getTotalPriceWebsites(arr) {
+        return arr.reduce((prevSum, website) => (prevSum += website.cost), 0);
+      }
+      const totalPriceWebsites = getTotalPriceWebsites(websites);
+      document.write(totalPriceWebsites);
+      //-----------------------------------------------------------------------------
+      document.write(
+        '<p class="tz">2) кількість сайтів, що було зроблено між 2000 та 2009 рр</p>'
+      );
+      function getCountWebsitesReleaseYearBetwwen2000And2009(arr) {
+        return arr.filter(
+          (website) => website.releaseYear > 2000 && website.releaseYear < 2009
+        ).length;
+      }
+      const countWebsitesReleaseYearBetwwen2000And2009 =
+        getCountWebsitesReleaseYearBetwwen2000And2009(websites);
+      document.write(countWebsitesReleaseYearBetwwen2000And2009);
+      //----------------------------------------------------------------------------
+      document.write(
+        '<p class="tz">3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000</p>'
+      );
+      function getCountWebsitesWithInvestmentsMoreThan100k(arr) {
+        return arr.filter(
+          (website) =>
+            website.sponsors.reduce(
+              (prevInvestment, sponsor) =>
+                (prevInvestment += sponsor.investment),
+              0
+            ) > 100000
+        ).length;
+      }
+      const countWebsitesWithInvestmentsMoreThan100k =
+        getCountWebsitesWithInvestmentsMoreThan100k(websites);
+      document.write(countWebsitesWithInvestmentsMoreThan100k);
+      //-----------------------------------------------------------------------------
+      document.write(
+        '<p class="tz">4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)</p>'
+      );
+      function getTotalListSponsors(arr) {
+        return arr.map((website) =>
+          website.sponsors.map((sponsor) => {
+            return sponsor.firstName + " " + sponsor.lastName;
+          })
+        );
+      }
+      console.log("task 4", getTotalListSponsors(websites));
+      document.write("Виведено у консоль");
+      //------------------------------------------------------------------------------
+      document.write(
+        '<p class="tz">5) знайти рік, коли прибуток був найбільшим</p>'
+      );
+      function getYearWithMaxProfit(arr) {
+        return arr.reduce(
+          (maxYear, website) => {
+            const totalInvestment = website.sponsors.reduce(
+              (sum, sponsor) => sum + sponsor.investment,
+              0
+            );
+            return totalInvestment > maxYear.maxProfit
+              ? { year: website.releaseYear, maxProfit: totalInvestment }
+              : maxYear;
+          },
+          { year: arr[0].releaseYear, maxProfit: 0 }
+        ).year;
+      }
+      const yearWithMaxProfit = getYearWithMaxProfit(websites);
+      document.write(yearWithMaxProfit);
+      //----------------------------------------------------------------------------
+      document.write(
+        '<p class="tz">6) упорядкувати список за спаданням прибутку</p>'
+      );
+      function sortListByFall(arr) {
+        arr.sort((web1, web2) => {
+          const totalInvestmentWeb1 = web1.sponsors.reduce(
+            (sum, sponsor) => sum + sponsor.investment,
+            0
+          );
+          const totalInvestmentWeb2 = web2.sponsors.reduce(
+            (sum, sponsor) => sum + sponsor.investment,
+            0
+          );
+          return totalInvestmentWeb2 - totalInvestmentWeb1;
+        });
+      }
+      sortListByFall(websites);
+      console.log("task 6", websites);
+      document.write("Виведено у консоль");
+      //-----------------------------------------------------------------------------
+      document.write(
+        '<p class="tz">7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000</p>'
+      );
+      function get2copiesWithWebsideCostMoreAndLessThan10k(arr) {
+        let websitesWithCostMoreThan10k = [];
+        let websitesWithCostLessThan10k = [];
+        for (let website = 0; website < arr.length; website++) {
+          if (arr[website].cost > 10000)
+            websitesWithCostMoreThan10k.push(
+              JSON.parse(JSON.stringify(arr[website]))
+            );
+          else if (arr[website].cost < 10000)
+            websitesWithCostLessThan10k.push(
+              JSON.parse(JSON.stringify(arr[website]))
+            );
+        }
+        return {
+          moreThan10k: websitesWithCostMoreThan10k,
+          lessThan10k: websitesWithCostLessThan10k,
+        };
+      }
+      console.log(
+        "task 7",
+        get2copiesWithWebsideCostMoreAndLessThan10k(websites)
+      );
+      document.write("Виведено у консоль");
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

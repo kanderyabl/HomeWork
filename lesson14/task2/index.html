@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 14</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 14</h1>
+    <h3>task 2</h3>
+    <p class="tz">
+      TT: Розробити функцію, у яку передають об’єкт (день, місяць, рік).
+      Визначити, який буде рік через N місяців.
+    </p>
+    <script>
+      function getYearAfterNMonths(day, month, year, n) {
+        const date = { day, month, year };
+        date.year += Math.floor((date.month + n) / 12);
+        date.month = (date.month + n) % 12;
+        return date.year;
+      }
+      let yearAfterNMonths = getYearAfterNMonths(1, 7, 2002, 260);
+      document.write(`${yearAfterNMonths}`);
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
