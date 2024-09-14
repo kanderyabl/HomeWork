@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 15</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 15</h1>
+    <h3>task 4</h3>
+    <p class="tz">TT: Розробити клас Baner</p>
+    <script>
+      class Baner {
+        constructor() {
+          this.baners = [
+            {
+              imageLink: "./img/Nova_Poshta.webp",
+              websiteLink: "https://novaposhta.ua/",
+            },
+            {
+              imageLink: "./img/Ukrnet.png",
+              websiteLink: "https://www.ukr.net/",
+            },
+            {
+              imageLink: "./img/google.jpg",
+              websiteLink: "https://www.google.com.ua/",
+            },
+          ];
+        }
+        getRandomobject() {
+          return this.baners[Math.floor(Math.random() * this.baners.length)];
+        }
+        showBaner(banner) {
+          document.write(
+            `<a style="cursor: pointer" href=${banner.websiteLink}><img src=${banner.imageLink} alt=""></a>`
+          );
+        }
+      }
+      let baners = new Baner();
+      baners.showBaner(baners.getRandomobject());
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 15</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 15</h1>
+    <h3>task 5</h3>
+    <p class="tz">TT: Розробити клас «Керівник танців»</p>
+    <script>
+      class HeadOfDances {
+        constructor() {
+          this.male = [
+            "Liam",
+            "Noah",
+            "Oliver",
+            "James",
+            "Elijah",
+            "Mateo",
+            "William",
+            "Mason",
+            "Grayson",
+            "Julian",
+          ];
+          this.female = [
+            "Sophia",
+            "Lily",
+            "Olivia",
+            "Isla",
+            "Ava",
+            "Amelia",
+            "Freya",
+            "Aria",
+            "Maya",
+            "Charlotte",
+          ];
+        }
+        getRandomMale() {
+          return this.male[Math.floor(Math.random() * this.male.length)];
+        }
+        getRandomFemale() {
+          return this.female[Math.floor(Math.random() * this.female.length)];
+        }
+        showPair(male, female) {
+          // document.write(`${male} та ${female}`);
+          const pair = document.createElement("div");
+          pair.textContent = `${male} та ${female}`;
+          document.body.appendChild(pair);
+        }
+        run() {
+          setInterval(
+            () => {
+              this.showPair(this.getRandomMale(), this.getRandomFemale());
+            },
+            5000
+            // this.showPair,
+            // 5000,
+            // this.getRandomMale(),
+            // this.getRandomFemale()
+          );
+        }
+      }
+      let headOfDances = new HeadOfDances();
+      headOfDances.run();
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
