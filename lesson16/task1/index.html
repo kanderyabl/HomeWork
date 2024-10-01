@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 16</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 16</h1>
+    <h3>task 1</h3>
+    <p class="tz">
+      TT: Створити клас TDate для роботи із датами у форматі “день.місяць.рік”.
+      Дата представляється структурою із трьома полями. Реалізувати методи
+      збільшення/зменшення дати на певну кількість днів, місяців чи років.
+      Введення та виведення дати реалізувати за допомогою методу toString.
+    </p>
+
+    <script>
+      class TDate {
+        #day;
+        #month;
+        #year;
+        constructor(startDay = 1, startMonth = 7, startYear = 2002) {
+          this.Year = startYear;
+          this.Month = startMonth;
+          this.Day = startDay;
+        }
+        getDaysInMonth(month, year) {
+          const daysInMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+          // Перевіряємо, чи рік ділиться на 4
+          if (year % 4 === 0) {
+            // Якщо рік ділиться на 100, перевіряємо, чи ділиться він на 400
+            if (year % 100 === 0) {
+              // Якщо рік ділиться на 400, він високосний
+              if (year % 400 === 0) {
+                daysInMonths[1] = 29;
+              } else {
+                daysInMonths[1] = 28; // Рік не високосний
+              }
+            } else {
+              daysInMonths[1] = 29; // Рік високосний
+            }
+          } else {
+            daysInMonths[1] = 28; // Рік не високосний
+          }
+          return daysInMonths[month - 1];
+        }
+        get Year() {
+          return this.#year;
+        }
+        set Year(newYear) {
+          if (newYear < 0) throw new Error("Рік некоректний");
+          this.#year = newYear;
+          if (this.#day > this.getDaysInMonth(this.#month, this.#year)) {
+            this.#day = this.getDaysInMonth(this.#month, this.#year);
+          }
+        }
+        get Month() {
+          return this.#month;
+        }
+        set Month(newMonth) {
+          if (newMonth < 0 || newMonth > 12)
+            throw new Error("Місяць некоректний");
+          this.#month = newMonth;
+        }
+        get Day() {
+          return this.#day;
+        }
+        set Day(newDay) {
+          if (
+            newDay > this.getDaysInMonth(this.Month, this.Year) ||
+            newDay < 1
+          ) {
+            throw new Error("День некоректний");
+          }
+          this.#day = newDay;
+        }
+
+        addYears(years) {
+          if (years > 0) this.Year += years;
+          else throw new Error("Рік некоректний");
+        }
+
+        addMonths(months) {
+          if (months > 0) {
+            this.#month += months;
+            while (this.#month > 12) {
+              this.addYears(1);
+              this.#month -= 12;
+            }
+            if (this.#day > this.getDaysInMonth(this.#month, this.#year)) {
+              this.#day = this.getDaysInMonth(this.#month, this.#year);
+            }
+          } else throw new Error("Місяць некоректний");
+        }
+
+        addDays(days) {
+          if (days > 0) {
+            this.#day += days;
+            while (this.#day > this.getDaysInMonth(this.Month, this.Year)) {
+              this.#day -= this.getDaysInMonth(this.Month, this.Year);
+              this.addMonths(1);
+            }
+          } else throw new Error("День некоректний");
+        }
+
+        subtractYears(years) {
+          if (years > 0) {
+            this.Year -= years;
+            if (this.#year < 0) this.#year = 0;
+          } else throw new Error("Рік некоректний");
+        }
+        subtractMonths(months) {
+          if (months > 0) {
+            this.#month -= months;
+            while (this.#month < 1) {
+              this.#month += 12;
+              this.subtractYears(1);
+            }
+            if (this.#day > this.getDaysInMonth(this.#month, this.#year)) {
+              this.#day = this.getDaysInMonth(this.#month, this.#year);
+            }
+          } else throw new Error("Місяць некоректний");
+        }
+
+        subtractDays(days) {
+          if (days > 0) {
+            this.#day -= days;
+            while (this.#day < 1) {
+              this.#day += this.getDaysInMonth(this.#month, this.Year);
+              this.subtractMonths(1);
+            }
+          } else throw new Error("День некоректний");
+        }
+
+        toString() {
+          return ` ${this.Day}.${this.Month}.${this.Year} `;
+        }
+      }
+      try {
+        const date = new TDate(30, 1, 1999);
+        date.addMonths(1);
+        date.addYears(1);
+        date.addDays(1);
+        date.subtractYears(1);
+        document.write(date);
+      } catch (error) {
+        console.log(error.message);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

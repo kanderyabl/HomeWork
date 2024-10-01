@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 16</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 16</h1>
+    <h3>task 3</h3>
+    <p class="tz"><img src="./image_2024-09-30_08-51-15.png" alt="" /></p>
+
+    <script>
+      class Services {
+        constructor(name, price, timeline) {
+          (this.name = name), (this.price = price), (this.timeline = timeline);
+        }
+        toString() {
+          return `Назва ${this.name} ціна${this.price} термін виконання${this.timeline}`;
+        }
+      }
+      class Branches {
+        constructor(country, city, street, buildingNum) {
+          (this.country = country),
+            (this.city = city),
+            (this.street = street),
+            (this.buildingNum = buildingNum);
+        }
+        toString() {
+          return `Країна ${this.country} місто ${this.city} вулиця${this.street} номер будинку${this.buildingNum}`;
+        }
+      }
+      class Firm {
+        constructor(name, year, month) {
+          this.name = name;
+          this.yearFoundation = { year: year, month: month };
+          this.services = [];
+          this.branches = [];
+        }
+        addService(service) {
+          this.services.push(service);
+        }
+        addBranches(branches) {
+          this.branches.push(branches);
+        }
+        getFirmAge() {
+          return new Date().getFullYear() - this.yearFoundation.year;
+        }
+        getAllBranchesByCity(city) {
+          return this.branches.filter((branch) => branch.city === city);
+        }
+        displayAvailableServices(money, timeline) {
+          const availableServices = this.services.filter(
+            (service) => service.price <= money && service.timeline <= timeline
+          );
+          for (let service = 0; service < availableServices.length; service++) {
+            document.write(
+              `<br>${availableServices[service].name}<br>${availableServices[service].price}<br> ${availableServices[service].timeline}<br><br>`
+            );
+          }
+        }
+        toString() {
+          return `${this.name} <br>дата засновання ${this.yearFoundation.year} ${this.yearFoundation.month}<br>послуг ${this.services.length}<br>філіалів ${this.branches.length}`;
+        }
+      }
+      const company = new Firm("kandTech", 2005, "jule");
+      company.addService(new Services("Website Development", 5000, 6));
+      company.addService(new Services("Mobile App Development", 15000, 8));
+      company.addService(new Services("SEO Optimization", 3000, 2));
+      company.addService(new Services("Cloud Services", 8000, 4));
+      company.addBranches(new Branches("Україна", "Київ", "Хрещатик", 22));
+      company.addBranches(
+        new Branches("Україна", "Львів", "Проспект Свободи", 15)
+      );
+      company.addBranches(
+        new Branches("Україна", "Одеса", "Дерибасівська", 10)
+      );
+      company.addBranches(new Branches("Україна", "Харків", "Сумська", 35));
+      document.write(company);
+      console.log(company.getFirmAge());
+      console.log(company.getAllBranchesByCity("Київ"));
+      company.displayAvailableServices(10000, 20);
+      console.log(company);
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

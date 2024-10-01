@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 16</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 16</h1>
+    <h3>task 4</h3>
+    <p class="tz">
+      TT: Створити клас TBankomat, який моделює роботу банкомата. Клас повинен
+      містити поля для зберігання кількості купюр кожного із номіналів від 5 до
+      200 гривень. Реалізувати методи знаходження максимальної та мінімальної
+      сум, які може видати банкомат, та метод зняття деякої суми.
+    </p>
+
+    <script>
+      class Banknotes {
+        #nominal5;
+        #nominal10;
+        #nominal20;
+        #nominal50;
+        #nominal100;
+        #nominal200;
+        constructor(
+          nominal5 = 10,
+          nominal0 = 10,
+          nominal20 = 10,
+          nominal50 = 10,
+          nominal100 = 10,
+          nominal200 = 10
+        ) {
+          this.Nominal5 = nominal5;
+          this.Nominal10 = nominal0;
+          this.Nominal20 = nominal20;
+          this.Nominal50 = nominal50;
+          this.Nominal100 = nominal100;
+          this.Nominal200 = nominal200;
+        }
+        get Nominal5() {
+          return this.#nominal5;
+        }
+        set Nominal5(newCount) {
+          if (newCount < 0) {
+            throw new Error("Кількість купюр не може бути відьемною");
+          }
+          this.#nominal5 = newCount;
+        }
+        get Nominal10() {
+          return this.#nominal10;
+        }
+        set Nominal10(newCount) {
+          if (newCount < 0) {
+            throw new Error("Кількість купюр не може бути відьемною");
+          }
+          this.#nominal10 = newCount;
+        }
+        get Nominal20() {
+          return this.#nominal20;
+        }
+        set Nominal20(newCount) {
+          if (newCount < 0) {
+            throw new Error("Кількість купюр не може бути відьемною");
+          }
+          this.#nominal20 = newCount;
+        }
+        get Nominal50() {
+          return this.#nominal50;
+        }
+        set Nominal50(newCount) {
+          if (newCount < 0) {
+            throw new Error("Кількість купюр не може бути відьемною");
+          }
+          this.#nominal50 = newCount;
+        }
+        get Nominal100() {
+          return this.#nominal100;
+        }
+        set Nominal100(newCount) {
+          if (newCount < 0) {
+            throw new Error("Кількість купюр не може бути відьемною");
+          }
+          this.#nominal100 = newCount;
+        }
+        get Nominal200() {
+          return this.#nominal200;
+        }
+        set Nominal200(newCount) {
+          if (newCount < 0) {
+            throw new Error("Кількість купюр не може бути відьемною");
+          }
+          this.#nominal200 = newCount;
+        }
+        getAllNominals() {
+          return {
+            Nominal5: this.Nominal5,
+            Nominal10: this.Nominal10,
+            Nominal20: this.Nominal20,
+            Nominal50: this.Nominal50,
+            Nominal100: this.Nominal100,
+            Nominal200: this.Nominal200,
+          };
+        }
+      }
+      class TBankomat {
+        #banknotes;
+        constructor(banknotes) {
+          this.Banknotes = banknotes;
+        }
+        get Banknotes() {
+          return this.#banknotes;
+        }
+        set Banknotes(banknotes) {
+          if (!(banknotes instanceof Banknotes))
+            throw new Error(
+              "Купюри можливо додати тількі за допомогою спеціального методу"
+            );
+          this.#banknotes = banknotes;
+        }
+
+        getMin() {
+          const allBancnotesMoreThan0 = Object.entries(
+            this.Banknotes.getAllNominals()
+          ).filter(([key, value]) => value > 0);
+          if (allBancnotesMoreThan0.length === 0)
+            throw new Error("Банкомат порожній");
+          return parseInt(allBancnotesMoreThan0[0][0].match(/\d+/)[0]);
+        }
+        getMax() {
+          return Object.entries(this.Banknotes.getAllNominals()).reduce(
+            (acc, [key, value]) => acc + key.match(/\d+/)[0] * value,
+            0
+          );
+        }
+        getAnyMoney(count) {
+          if (count > this.getMax())
+            throw new Error(
+              `В банкоматі немає стільки грошей. максимальна сумма для зняття ${this.getMax()}`
+            );
+          if (count < this.getMin()) {
+            throw new Error(
+              `В банкоматі немає купюр для видачи такої кількості грошей. мінімальна суммаа доступна для зняття: ${this.getMin()}`
+            );
+          }
+          if (count % 5 != 0)
+            throw new Error(
+              `неможливо зняти таку сумму. пропоную вам зняти ${
+                count - (count % 5)
+              }`
+            );
+          let countToWithdraw = count;
+          let tempBanknotes = {
+            Nominal200: this.Banknotes.Nominal200,
+            Nominal100: this.Banknotes.Nominal100,
+            Nominal50: this.Banknotes.Nominal50,
+            Nominal20: this.Banknotes.Nominal20,
+            Nominal10: this.Banknotes.Nominal10,
+            Nominal5: this.Banknotes.Nominal5,
+          };
+          while (countToWithdraw > 0) {
+            if (countToWithdraw >= 200 && tempBanknotes.Nominal200 > 0) {
+              if (countToWithdraw / 200 > tempBanknotes.Nominal200) {
+                countToWithdraw -= 200 * tempBanknotes.Nominal200;
+                tempBanknotes.Nominal200 = 0;
+              } else {
+                tempBanknotes.Nominal200 -= countToWithdraw / 200;
+                countToWithdraw -= 200 * (countToWithdraw / 200);
+              }
+            } else if (countToWithdraw >= 100 && tempBanknotes.Nominal100 > 0) {
+              if (countToWithdraw / 100 > tempBanknotes.Nominal100) {
+                countToWithdraw -= 100 * tempBanknotes.Nominal100;
+                tempBanknotes.Nominal100 = 0;
+              } else {
+                tempBanknotes.Nominal100 -= countToWithdraw / 100;
+                countToWithdraw -= 100 * (countToWithdraw / 100);
+              }
+            } else if (countToWithdraw >= 50 && tempBanknotes.Nominal50 > 0) {
+              if (countToWithdraw / 50 > tempBanknotes.Nominal50) {
+                countToWithdraw -= 50 * tempBanknotes.Nominal50;
+                tempBanknotes.Nominal50 = 0;
+              } else {
+                tempBanknotes.Nominal50 -= countToWithdraw / 50;
+                countToWithdraw -= 50 * (countToWithdraw / 50);
+              }
+            } else if (countToWithdraw >= 20 && tempBanknotes.Nominal20 > 0) {
+              if (countToWithdraw / 20 > tempBanknotes.Nominal20) {
+                countToWithdraw -= 20 * tempBanknotes.Nominal20;
+                tempBanknotes.Nominal20 = 0;
+              } else {
+                tempBanknotes.Nominal20 -= countToWithdraw / 20;
+                countToWithdraw -= 20 * (countToWithdraw / 20);
+              }
+            } else if (countToWithdraw >= 10 && tempBanknotes.Nominal10 > 0) {
+              if (countToWithdraw / 10 > tempBanknotes.Nominal10) {
+                countToWithdraw -= 10 * tempBanknotes.Nominal10;
+                tempBanknotes.Nominal10 = 0;
+              } else {
+                tempBanknotes.Nominal10 -= countToWithdraw / 10;
+                countToWithdraw -= 10 * (countToWithdraw / 10);
+              }
+            } else if (countToWithdraw >= 5 && tempBanknotes.Nominal5 > 0) {
+              if (countToWithdraw / 5 > tempBanknotes.Nominal5) {
+                countToWithdraw -= 5 * tempBanknotes.Nominal5;
+                tempBanknotes.Nominal5 = 0;
+              } else {
+                tempBanknotes.Nominal5 -= countToWithdraw / 5;
+                countToWithdraw -= 5 * (countToWithdraw / 5);
+              }
+            } else
+              throw new Error(
+                `Недостатньо купюр для зняття залишкової суми ${countToWithdraw}. Операція скасована.`
+              );
+          }
+          this.Banknotes = new Banknotes(
+            tempBanknotes.Nominal5,
+            tempBanknotes.Nominal10,
+            tempBanknotes.Nominal20,
+            tempBanknotes.Nominal50,
+            tempBanknotes.Nominal100,
+            tempBanknotes.Nominal200
+          );
+          return `Сума ${count} успішно знята.`;
+        }
+      }
+
+      //=========================================================================================
+      try {
+        const bancomat = new TBankomat(new Banknotes(0, 10, 10, 10, 10, 10));
+        console.log(bancomat);
+        console.log(bancomat.getMax());
+        let res = bancomat.getAnyMoney(2225);
+        document.write(res);
+      } catch (error) {
+        document.write(error.message);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

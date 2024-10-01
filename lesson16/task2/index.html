@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 16</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 16</h1>
+    <h3>task 2</h3>
+    <p class="tz">
+      TT: Створити клас TMoney для роботи з грошовими сумами. Сума повинна
+      зберігатися у вигляді доларового еквіваленту. Реалізувати методи
+      додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та
+      визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс
+      долара зберігати в окремому полі.
+    </p>
+
+    <script>
+      class TMoney {
+        #usdRate;
+        #usdCount;
+        constructor(usdRate, startCountUah) {
+          this.UsdRate = usdRate;
+          this.UsdCount = startCountUah;
+        }
+        get UsdRate() {
+          return this.#usdRate;
+        }
+        set UsdRate(usdRate) {
+          if (usdRate > 0) this.#usdRate = usdRate;
+          else throw new Error("кількість повинна бути більшою за 0");
+        }
+        get UsdCount() {
+          return this.#usdCount;
+        }
+        set UsdCount(uahCount) {
+          if (uahCount > 0) {
+            this.#usdCount = uahCount / this.UsdRate;
+          } else throw new Error("кількість повинна бути більшою за 0");
+        }
+        addMoney(countUah) {
+          if (countUah > 0) {
+            this.#usdCount += countUah / this.UsdRate;
+          } else throw new Error("кількість повинна бути більшою за 0");
+        }
+        subtractMoney(countUah) {
+          if (countUah > 0) {
+            if (this.#usdCount - countUah / this.#usdRate < 0)
+              throw new Error("грошей не вистачає");
+            else {
+              this.#usdCount -= countUah / this.#usdRate;
+            }
+          } else throw new Error("кількість повинна бути більшою за 0");
+        }
+        toString() {
+          return `${this.UsdRate}UAH  ${this.UsdCount.toFixed(2)}$ <br>`;
+        }
+        getUsdRateAtWhichUahMoreBy100() {
+          if (this.UsdCount > 0) {
+            return (this.UsdRate * this.UsdCount + 100) / this.UsdCount;
+          } else throw new Error("кількість $ повинна бути більшою за 0");
+        }
+      }
+      try {
+        const money = new TMoney(41, 20000);
+        // money.subtractMoney(100);
+        document.write(money);
+        document.write(money.getUsdRateAtWhichUahMoreBy100());
+      } catch (error) {
+        console.log(error.message);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
