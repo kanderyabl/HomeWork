@@ -128,8 +128,10 @@
           setInterval(() => this.generateTests(), 10000);
         }
       }
-      let testMeneger = new TestManager(1, 10, 1, 100, 5);
-      // testMeneger.run();
+      if (confirm("Почати тестування?")) {
+        let testMeneger = new TestManager(1, 10, 1, 100, 5);
+        testMeneger.run();
+      }
     </script>
 
     <a href="./../index.html"><h2>back</h2></a>
