@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 17</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 17</h1>
+    <h3>task 5</h3>
+    <p class="tz">
+      Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно
+      генеруються числа, які треба перемножати), AddChecker (клас для перевірки
+      додавання - рандомно генеруються числа у заданому діапазоні, які треба
+      додавати). Обидва класи надсилають результати тестування об'єкту класу
+      Hystory, який зберігає історію тестування у масиві у вигляді об'єктів
+      Приклад. testsList= [ {firstNum:1, secondNum:5,opration:’*’, userAnswer:7,
+      correctAnswer:5}, {firstNum:3, secondNum:4,opration:’+’, userAnswer:7,
+      correctAnswer:7}, ] Можна створити окремий клас TestData, який описує один
+      такий тест і у якому будуть ці поля. Розробити клас TestManager, який
+      використовуючи ці класи за допомогою таймера періодично генерує якісь N
+      задач (рандомно вибираємо, що опитувати: додавання чи множення) і
+      проводить опитування. Результати тестування додаються в об’єкт History.
+      Зробити так, щоб об'єкт такого класу можна було створити тільки один. Коли
+      зроблено ці N задач вивести усю історію на екран.
+    </p>
+
+    <script>
+      class MultChecker {
+        static generateMult(min, max) {
+          let num1 = Math.floor(Math.random() * (max - min + 1)) + min;
+          let num2 = Math.floor(Math.random() * (max - min + 1)) + min;
+          return {
+            num1: num1,
+            num2: num2,
+            opration: "*",
+            correctAnswer: num1 * num2,
+          };
+        }
+      }
+      class AddChecker {
+        static generateAdd(min, max) {
+          let num1 = Math.floor(Math.random() * (max - min + 1)) + min;
+          let num2 = Math.floor(Math.random() * (max - min + 1)) + min;
+          return {
+            num1: num1,
+            num2: num2,
+            opration: "+",
+            correctAnswer: num1 + num2,
+          };
+        }
+      }
+      class TestData {
+        static generateTest(
+          multMin = 1,
+          multMax = 10,
+          addMin = 1,
+          addMax = 100
+        ) {
+          let test;
+          let userAnswer;
+          if (Math.round(Math.random()) === 0) {
+            test = MultChecker.generateMult(multMin, multMax);
+            userAnswer = parseInt(prompt(`${test.num1}*${test.num2}=?`));
+          } else {
+            test = AddChecker.generateAdd(addMin, addMax);
+            userAnswer = parseInt(prompt(`${test.num1}+${test.num2}=?`));
+          }
+          return { ...test, userAnswer: userAnswer };
+        }
+      }
+      class History {
+        constructor() {
+          this.history = [];
+        }
+        addHistory(obj) {
+          this.history.push(obj);
+        }
+        show() {
+          for (let i = 0; i < this.history.length; i++) {
+            document.write(
+              `перше число ${this.history[i].num1} друге число ${this.history[i].num2} операція ${this.history[i].opration} корректна відповідь ${this.history[i].correctAnswer} відповідь користувача ${this.history[i].userAnswer} <br>`
+            );
+          }
+        }
+      }
+
+      class TestManager {
+        static testManagerObj;
+        constructor(
+          multMin = 1,
+          multMax = 10,
+          addMin = 1,
+          addMax = 100,
+          numberTests = 5
+        ) {
+          if (TestManager.testManagerObj) return TestManager.testManagerObj;
+          this.multMin = multMin;
+          this.multMax = multMax;
+          this.addMin = addMin;
+          this.addMax = addMax;
+          this.numberTests = numberTests;
+          this.history = new History();
+          TestManager.testManagerObj = this;
+        }
+        generateTests() {
+          let testNum = 0;
+          while (testNum < this.numberTests) {
+            this.history.addHistory(TestData.generateTest());
+            testNum++;
+          }
+          this.history.show();
+        }
+        run() {
+          setInterval(() => this.generateTests(), 10000);
+        }
+      }
+      let testMeneger = new TestManager(1, 10, 1, 100, 5);
+      // testMeneger.run();
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 17</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 17</h1>
+    <h3>task 1</h3>
+    <p class="tz">
+      Створити клас, що дозволяє виконувати такі операції над масивами:
+      знаходження кількості додатних, кількості від’ємних, кількість входжень
+      деякого числа (статичні методи)
+    </p>
+
+    <script>
+      let array = [
+        2, 3, -10, -9, -9, 5, -8, -5, 9, 6, 7, 4, -1, -9, -7, 2, 6, 9, 6, 7, 5,
+        -3, 7, 7, -3, 5,
+      ];
+      class Arr {
+        static countPositive(arr) {
+          return arr.reduce((acc, el) => (el > 0 ? acc + 1 : acc), 0);
+        }
+        static countNegative(arr) {
+          return arr.reduce((acc, el) => (el < 0 ? acc + 1 : acc), 0);
+        }
+        static countOccurrences(arr, num) {
+          return arr.reduce((acc, el) => (el === num ? acc + 1 : acc), 0);
+        }
+      }
+      document.write(Arr.countPositive(array));
+      document.write(Arr.countNegative(array));
+      document.write(Arr.countOccurrences(array, 7));
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

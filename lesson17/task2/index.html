@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 17</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 17</h1>
+    <h3>task 2</h3>
+    <p class="tz">
+      Створити службове авто (водій, марка, номер). Створити клас таким чином,
+      щоб можна було створити тільки один екземпляр цього класу.
+    </p>
+
+    <script>
+      class OficialCar {
+        static oficialCarDriverObj;
+        constructor(driverFirstName, driverSecondName, carBrand, carNumber) {
+          if (OficialCar.oficialCarDriverObj)
+            return OficialCar.oficialCarDriverObj;
+          this.oficialCarDriver = {
+            firstName: driverFirstName,
+            secondName: driverSecondName,
+          };
+          this.oficialCarBrand = carBrand;
+          this.oficialCarNumber = carNumber;
+          OficialCar.oficialCarDriverObj = this;
+        }
+      }
+      let oficialCar1 = new OficialCar("Ivan", "Ivanov", "BMW", "ХА3247ТН");
+      let oficialCar2 = new OficialCar(
+        "Petr",
+        "Petrov",
+        "Mersedes",
+        "AA2357ТН"
+      );
+      let oficialCar3 = new OficialCar(
+        "Danil",
+        "Danilov",
+        "Danilov",
+        "AP3247ТН"
+      );
+      console.log(oficialCar1);
+      console.log(oficialCar2);
+      console.log(oficialCar3);
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

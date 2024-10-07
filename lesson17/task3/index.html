@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 17</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 17</h1>
+    <h3>task 3</h3>
+    <p class="tz">
+      Створити клас Нагадувач. Кожні вказані кількості секунд (використати
+      setInterval) програма нагадує про якусь подію (це просто текст) і також
+      виводиться порядковий номер скільки раз вже нагадування було. Зробити так,
+      щоб неможна було зробити одночасно декілька об’єктів-нагадувачів. Методи
+      зупинки таймера, метод зміни повідомлення без зупинки таймера.
+    </p>
+
+    <script>
+      class Reminder {
+        static reminderObj;
+        constructor(interval, msg) {
+          if (Reminder.reminderObj) return Reminder.reminderObj;
+          this.interval = interval;
+          this.message = msg;
+          this.count = 0;
+          Reminder.reminderObj = this;
+        }
+        run() {
+          this.getRemind = setInterval(() => {
+            Reminder.reminderObj.count += 1;
+            console.log(
+              Reminder.reminderObj.message,
+              Reminder.reminderObj.count
+            );
+          }, Reminder.reminderObj.interval);
+        }
+        stop() {
+          clearInterval(this.getRemind);
+        }
+        changeMsg(msg) {
+          Reminder.reminderObj.message = msg;
+        }
+      }
+      let reminder2 = new Reminder(2000, "купи картоплю");
+      let reminder = new Reminder(2000, "купи маркву");
+      reminder.run();
+      setTimeout(() => reminder.changeMsg("купи цебулю"), 10000);
+      setTimeout(() => reminder.stop(), 20000);
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

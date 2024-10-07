@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 17</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 17</h1>
+    <h3>task 4</h3>
+    <p class="tz">
+      Склад. База товарів, які зберігаються на складі: назва товару, одиниця
+      виміру, кількість, фірма виробник (назва, реєстраційний номер).
+      Організувати реєстрацію/відвантаження товарів, фільтрація за назвою
+      товару, фільтрація за назвою фірми
+    </p>
+
+    <script>
+      class Firm {
+        #registrNum;
+        get ReristrNum() {
+          return this.#registrNum;
+        }
+        set ReristrNum(regNum) {
+          if (regNum < 1000 && regNum.length < 4)
+            throw new Error(
+              "Реєстаційний номер складаеться з 4 або більше цифр "
+            );
+          this.#registrNum = regNum;
+        }
+        constructor({ nameFirm, regNum }) {
+          this.name = nameFirm;
+          this.ReristrNum = regNum;
+        }
+      }
+      class Product {
+        #productCount;
+        get ProductCount() {
+          return this.#productCount;
+        }
+        set ProductCount(newCount) {
+          if (newCount < 0)
+            throw new Error("кількість товару не може бути відьемною");
+          this.#productCount = newCount;
+        }
+        constructor({ nameProduct, measurement, countProduct, firm }) {
+          this.nameProduct = nameProduct;
+          this.measurement = measurement;
+          this.ProductCount = countProduct;
+          this.firm = new Firm(firm);
+        }
+      }
+      class Storage {
+        constructor(initData) {
+          this.products = [new Product(initData)];
+        }
+        regProduct(newProduct) {
+          this.products.push(new Product(newProduct));
+        }
+        shipmentProduct(name, count) {
+          const productIndex = this.products.findIndex(
+            (el) => el.nameProduct === name
+          );
+          if (count < 0)
+            throw new Error("кількість товару не може бути відьемною");
+          if (productIndex === -1)
+            throw new Error("Продукту з таким ім'ям немає");
+          if (this.products[productIndex].ProductCount < count)
+            throw new Error(
+              `на складі немає такої кількості цеї позиції, кількість що є на складі:${this.products[productIndex].ProductCount}`
+            );
+          this.products[productIndex].ProductCount -= count;
+          if (this.products[productIndex].ProductCount === 0)
+            this.products.splice(productIndex, 1);
+          return true;
+        }
+        filterByProductName(name) {
+          return this.products.filter((el) => el.nameProduct === name);
+        }
+        filterByFirmName(name) {
+          return this.products.filter((el) => el.firm.name === name);
+        }
+        toString() {
+          if (this.products.length === 0) {
+            return "Склад порожній.";
+          }
+
+          return this.products
+            .map((product) => {
+              return `Продукт: ${product.nameProduct}, Кількість: ${product.ProductCount}, Одиниця вимірювання: ${product.measurement}, Фірма: ${product.firm.name} <br>`;
+            })
+            .join("\n");
+        }
+      }
+      try {
+        const storage = new Storage({
+          nameProduct: "Sugar",
+          measurement: "kg",
+          countProduct: 100,
+          firm: { nameFirm: "SweetCo", regNum: 1234 },
+        });
+        storage.regProduct({
+          nameProduct: "Salt",
+          measurement: "kg",
+          countProduct: 50,
+          firm: { nameFirm: "SaltCo", regNum: 5678 },
+        });
+        storage.regProduct({
+          nameProduct: "Flour",
+          measurement: "kg",
+          countProduct: 30,
+          firm: { nameFirm: "TastyFlour", regNum: 9101 },
+        });
+
+        storage.regProduct({
+          nameProduct: "Oil",
+          measurement: "l",
+          countProduct: 20,
+          firm: { nameFirm: "GoldOil", regNum: 1121 },
+        });
+
+        storage.regProduct({
+          nameProduct: "Buckwheat",
+          measurement: "kg",
+          countProduct: 10,
+          firm: { nameFirm: "GrainCo", regNum: 3141 },
+        });
+
+        storage.regProduct({
+          nameProduct: "Milk",
+          measurement: "l",
+          countProduct: 15,
+          firm: { nameFirm: "DairyFarm", regNum: 5161 },
+        });
+
+        // for (const element of storage.filterByProductName("Oil")) {
+        //   document.write(
+        //     `Продукт: ${element.nameProduct}, Количество: ${element.ProductCount}, Измерение: ${element.measurement}, Фирма: ${element.firm.name}<br>`
+        //   );
+        // }
+
+        // for (const element of storage.filterByFirmName("DairyFarm")) {
+        //   document.write(
+        //     `Продукт: ${element.nameProduct}, Количество: ${element.ProductCount}, Измерение: ${element.measurement}, Фирма: ${element.firm.name}<br>`
+        //   );
+        // }
+        storage.shipmentProduct("Oil", 20);
+        document.write(storage, "<br>");
+      } catch (error) {
+        document.write(error.message);
+      }
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
