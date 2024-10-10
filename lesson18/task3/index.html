@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 18</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 18</h1>
+    <h3>task 3</h3>
+    <p class="tz">
+      Користувач задає рік народження. Визначити кількість років користувача.
+    </p>
+
+    <script>
+      function getFullYEar() {
+        const userBirthday = new Date(
+          document.querySelector(".user-birthday").value
+        );
+        const currentDate = new Date();
+
+        let yearsDifference =
+          currentDate.getFullYear() - userBirthday.getFullYear();
+
+        let monthDifferece = currentDate.getMonth() - userBirthday.getMonth();
+        let dayDifference = currentDate.getDay() - userBirthday.getDay();
+
+        if (monthDifferece < 0 || (monthDifferece === 0 && dayDifference < 0))
+          yearsDifference--;
+        document.querySelector(".res").innerText = yearsDifference;
+      }
+      window.onload = function () {
+        document.querySelector(".button").onclick = () => getFullYEar();
+      };
+    </script>
+    <div class="get-yo">
+      <label for="">
+        коли у вас день народження?
+        <input class="user-birthday" type="date" />
+      </label>
+      <button type="submit" class="button">розрахувати</button>
+      <div class="">вам <span class="res"></span> роки(ів)</div>
+    </div>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

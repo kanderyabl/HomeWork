@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 18</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 18</h1>
+    <h3>task 6</h3>
+    <p class="tz">
+      Користувач задає кількість оцінок і натискає на кнопку «get table». В
+      результаті формується таблиця з input, куди користувач вводить оцінки.
+      Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+    </p>
+
+    <script>
+      // function getRowsAndColumns() {
+      //   const inputsCount = parseInt(
+      //     document.querySelector(".grade-number").value
+      //   );
+      //   const rows = Math.floor(inputsCount / 2);
+      //   const columns = Math.ceil(inputsCount / 2);
+      //   console.log([rows, columns]);
+      //   return [rows, columns];
+      // }
+
+      function createTable() {
+        const inputsCount = parseInt(
+          document.querySelector(".grade-number").value
+        );
+        const table = document.createElement("table");
+        let row = document.createElement("tr");
+
+        for (let i = 0; i < inputsCount; i++) {
+          const td = document.createElement("td");
+          const input = document.createElement("input");
+          input.type = "number";
+          input.classList.add("grade-input");
+          td.appendChild(input);
+          row.appendChild(td);
+
+          if ((i + 1) % 2 === 0 || i === inputsCount - 1) {
+            table.appendChild(row);
+            row = document.createElement("tr");
+          }
+        }
+
+        const body = document.querySelector("body");
+        const refEl = document.querySelector("a");
+        const tableDiv = document.createElement("div");
+
+        const resDiv = document.createElement("div");
+        resDiv.innerText = "mean grade";
+        const resSpan = document.createElement("span");
+        resSpan.classList.add("res");
+        resDiv.appendChild(resSpan);
+
+        tableDiv.classList.add("table");
+        body.insertBefore(tableDiv, refEl);
+        tableDiv.appendChild(table);
+        tableDiv.appendChild(resDiv);
+
+        const getMeanBtn = document.createElement("button");
+        getMeanBtn.type = "button";
+        getMeanBtn.innerText = "Get mean grade";
+        getMeanBtn.classList.add("get-mean-grade");
+        tableDiv.appendChild(getMeanBtn);
+
+        getMeanBtn.onclick = () => getMeanGrade();
+      }
+
+      function getMeanGrade() {
+        const grades = document.getElementsByClassName("grade-input");
+        let totalGrade = 0;
+
+        for (let grade = 0; grade < grades.length; grade++) {
+          const value = parseInt(grades[grade].value);
+          if (!isNaN(value)) {
+            totalGrade += value;
+          }
+        }
+
+        document.querySelector(".res").innerText = (
+          totalGrade / grades.length
+        ).toFixed(2);
+      }
+
+      window.onload = function () {
+        document.querySelector(".grade-number__btn").onclick = () =>
+          createTable();
+      };
+    </script>
+    <label for="">
+      Grade number
+      <input class="grade-number" type="number" />
+    </label>
+    <button type="submit" class="button grade-number__btn">get table</button>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

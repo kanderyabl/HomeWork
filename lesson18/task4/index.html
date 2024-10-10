@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 18</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 18</h1>
+    <h3>task 4</h3>
+    <p class="tz">
+      Наперед задано у скрипті масив зі списком бажань. Після завантаження
+      сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх
+      треба створити і додати на сторінку)
+    </p>
+
+    <script>
+      const wishlist = [
+        "Подорож на Мальдіви",
+        "Навчитися грати на гітарі",
+        "Купити новий ноутбук",
+        "Прочитати 10 книг у цьому році",
+        "Вивчити іспанську мову",
+        "Стрибнути з парашутом",
+        "Піти на концерт улюбленого гурту",
+        "Покататися на гірських лижах",
+        "Почати займатися спортом регулярно",
+        "Побачити північне сяйво",
+        "Завести домашнього улюбленця",
+        "Опанувати мистецтво малювання",
+        "Побувати у Парижі",
+        "Побудувати власний будинок",
+        "Зайнятися волонтерством",
+      ];
+      function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      function getRandomWish() {
+        return wishlist[getRandomNumber(0, wishlist.length - 1)];
+      }
+      function showWish() {
+        let body = document.querySelector("body");
+        let refEl = document.querySelector("a");
+        for (let i = 0; i < 3; i++) {
+          const newDiv = document.createElement("div");
+          newDiv.innerText = getRandomWish();
+          body.insertBefore(newDiv, refEl);
+        }
+      }
+      showWish();
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

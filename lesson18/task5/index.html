@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 18</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 18</h1>
+    <h3>task 5</h3>
+    <p class="tz">
+      Відобразити таблицю 3*4 з випадковими числами (її треба динамічно створити
+      і вставити на сторінку)
+    </p>
+
+    <script>
+      function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      function createTable(rows, columns) {
+        const table = document.createElement("table");
+        for (let row = 0; row < rows; row++) {
+          const tr = document.createElement("tr");
+          for (let column = 0; column < columns; column++) {
+            const td = document.createElement("td");
+            td.innerText = getRandomNumber(1, 100);
+            tr.appendChild(td);
+          }
+          table.appendChild(tr);
+        }
+        const body = document.querySelector("body");
+
+        const refEl = document.querySelector("a");
+        body.insertBefore(table, refEl);
+      }
+      createTable(3, 4);
+    </script>
+
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 18</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 18</h1>
+    <h3>task 2</h3>
+    <p class="tz">
+      Зробити конвертер валют (курси валют – константи у скрипті)
+    </p>
+
+    <script>
+      function convert() {
+        const usd = 41;
+        const eur = 45;
+        let grn = parseInt(document.querySelector(".grn").value);
+        document.querySelector(".res-usd").innerText = grn * usd;
+        document.querySelector(".res-eur").innerText = grn * eur;
+      }
+      window.onclick = function () {
+        document.querySelector(".button").onclick = () => convert();
+      };
+    </script>
+    <div class="convert">
+      <label for="">
+        Сумма у гривнях
+        <input class="grn" type="number" />
+      </label>
+      <br />
+      <button type="submit" class="button">Конвертувати</button>
+      <div class="">Сумма в долларах <span class="res-usd"></span></div>
+      <div class="">Сумма в євро <span class="res-eur"></span></div>
+    </div>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

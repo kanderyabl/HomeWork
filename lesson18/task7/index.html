@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 18</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 18</h1>
+    <h3>task 7</h3>
+    <p class="tz">
+      Подорож складається з 3 етапів. На кожному етапі користувач може вибрати
+      один з видів транспорту (авто, автобус, літак - випадаючий список),
+      харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х
+      гідів(використати - radio buttons). Ціни визначте самі. Підрахувати
+      загальну вартість.
+    </p>
+
+    <script>
+      function getTotalTravelPrrice() {
+        let transports = document.querySelectorAll("select");
+        let inputs = document.querySelectorAll("input");
+        let totalTravelPrice = 0;
+        for (const transport of transports) {
+          totalTravelPrice += parseInt(transport.value);
+        }
+        for (const input of inputs) {
+          if (input.checked) {
+            totalTravelPrice += parseInt(input.value);
+          }
+        }
+        console.log(totalTravelPrice);
+      }
+      window.onload = function () {
+        document.querySelector(".button-res").onclick = () =>
+          getTotalTravelPrrice();
+      };
+    </script>
+    <h3>Етап 1</h3>
+    <label for="">
+      Транспорт
+      <select name="" id="firstPartTransport">
+        <option value="500">авто - 500grn</option>
+        <option value="1000">автобус - 1000grn</option>
+        <option value="1500">літак - 1500grn</option>
+      </select>
+    </label>
+    <br />
+    <label for="">
+      харчування
+      <br />
+      <label for="">
+        сніданок - 100grn
+        <input value="100" type="checkbox" name="" id="" />
+      </label>
+      <label for="">
+        обід - 200grn
+        <input value="200" type="checkbox" name="" id="" />
+      </label>
+      <label for="">
+        вечеря - 300grn
+        <input value="300" type="checkbox" name="" id="" />
+      </label>
+    </label>
+    <br />
+    <label for="">
+      гід
+      <br />
+      <input type="radio" name="guide1" id="" value="2000" />гід 1 - 2000grn
+      <input type="radio" name="guide1" id="" value="500" />гід 2 - 500grn
+      <input type="radio" name="guide1" id="" value="1000" />гід 3 - 1000grn
+    </label>
+    <h3>Етап 2</h3>
+    <label for="">
+      Транспорт
+      <select name="" id="firstPartTransport">
+        <option value="500">авто - 500grn</option>
+        <option value="1000">автобус - 1000grn</option>
+        <option value="1500">літак - 1500grn</option>
+      </select>
+    </label>
+    <br />
+    <label for="">
+      харчування
+      <br />
+      <label for="">
+        сніданок - 100grn
+        <input value="100" type="checkbox" name="" id="" />
+      </label>
+      <label for="">
+        обід - 200grn
+        <input value="200" type="checkbox" name="" id="" />
+      </label>
+      <label for="">
+        вечеря - 300grn
+        <input value="300" type="checkbox" name="" id="" />
+      </label>
+    </label>
+    <br />
+    <label for="">
+      гід
+      <br />
+      <input type="radio" name="guide2" id="" value="2000" />гід 1 - 2000grn
+      <input type="radio" name="guide2" id="" value="500" />гід 2 - 500grn
+      <input type="radio" name="guide2" id="" value="1000" />гід 3 - 1000grn
+    </label>
+    <h3>Етап 3</h3>
+    <label for="">
+      Транспорт
+      <select name="" id="firstPartTransport">
+        <option value="500">авто - 500grn</option>
+        <option value="1000">автобус - 1000grn</option>
+        <option value="1500">літак - 1500grn</option>
+      </select>
+    </label>
+    <br />
+    <label for="">
+      харчування
+      <br />
+      <label for="">
+        сніданок - 100grn
+        <input value="100" type="checkbox" name="" id="" />
+      </label>
+      <label for="">
+        обід - 200grn
+        <input value="200" type="checkbox" name="" id="" />
+      </label>
+      <label for="">
+        вечеря - 300grn
+        <input value="300" type="checkbox" name="" id="" />
+      </label>
+    </label>
+    <br />
+    <label for="">
+      гід
+      <br />
+      <input type="radio" name="guide3" id="" value="2000" />гід 1 - 2000grn
+      <input type="radio" name="guide3" id="" value="500" />гід 2 - 500grn
+      <input type="radio" name="guide3" id="" value="1000" />гід 3 - 1000grn
+    </label>
+    <br />
+    <button type="button" class="button-res">Розрахувати</button>
+    <div class="div-res">
+      Загальна вартість подорожі <span class="span-res"></span> grn
+    </div>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

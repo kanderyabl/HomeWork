@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 18</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 18</h1>
+    <h3>task 1</h3>
+    <p class="tz">Розробити калькулятор</p>
+
+    <script>
+      function calc(operation) {
+        const firstNum = parseInt(document.querySelector(".first-num").value);
+        const secondNum = parseInt(document.querySelector(".second-num").value);
+        let res;
+        switch (operation) {
+          case "plus":
+            res = firstNum + secondNum;
+
+            break;
+          case "minus":
+            res = firstNum - secondNum;
+
+            break;
+          case "mult":
+            res =
+              secondNum !== 0 ? firstNum * secondNum : "На 0 ділити не можна";
+
+            break;
+          case "divide":
+            res = firstNum / secondNum;
+
+            break;
+
+          default:
+            break;
+        }
+        document.querySelector(".res").innerText = res;
+      }
+      window.onload = function () {
+        document.querySelector(".plus").onclick = () => calc("plus");
+        document.querySelector(".minus").onclick = () => calc("minus");
+        document.querySelector(".mult").onclick = () => calc("mult");
+        document.querySelector(".divide").onclick = () => calc("divide");
+      };
+    </script>
+    <div>
+      <label for="">
+        first number
+        <input type="number" class="first-num" /> </label
+      ><br />
+      <label for="">
+        second number
+        <input type="number" class="second-num" />
+      </label>
+      <br />
+      <button type="submit" class="button plus">додати</button>
+      <button type="submit" class="button minus">відняти</button>
+      <button type="submit" class="button mult">помножити</button>
+      <button type="submit" class="button divide">поділити</button>
+      <br />
+      <div>Результат <span class="res"></span></div>
+    </div>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
