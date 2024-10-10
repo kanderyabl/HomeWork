@@ -42,7 +42,7 @@
             totalTravelPrice += parseInt(input.value);
           }
         }
-        console.log(totalTravelPrice);
+        document.querySelector(".span-res").innerText = totalTravelPrice;
       }
       window.onload = function () {
         document.querySelector(".button-res").onclick = () =>
