@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 19</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 19</h1>
+    <h3>task 5</h3>
+    <p class="tz">
+      Відображаємо картки товарів, які користувач може вибирати. Вибраний товар
+      має зелену рамку (при кліку робити toogle з класом вибраного елемента)
+    </p>
+
+    <script>
+      class Product {
+        constructor(img, brand, model, price, sellStatus) {
+          this.productImg = img;
+          this.brand = brand;
+          this.price = price;
+          this.model = model;
+          this.sellStatus = sellStatus;
+        }
+      }
+      class Products {
+        constructor() {
+          this.products = [];
+        }
+        addProd(product) {
+          this.products.push(product);
+        }
+      }
+      const acer = new Product(
+        "./img/Laptop-ACER.jpg",
+        "ACER",
+        20000,
+        "NITRO V15",
+        "ТОП ПРОДАЖ"
+      );
+      const apple = new Product(
+        "./img/MacBook-Air-13-.jpg",
+        "apple macBook",
+        30000,
+        "Air 13",
+        "ТОП ПРОДАЖ"
+      );
+      const hp = new Product(
+        "./img/Laptop-HP-Victus-15-.jpg",
+        "HP",
+        25000,
+        "Victus 15",
+        "ТОП ПРОДАЖ"
+      );
+      const lenovo = new Product(
+        "./img/Laptop-LENOVO-LOQ-.jpg",
+        "lenovo",
+        33500,
+        "LOQ",
+        "АКЦІЯ"
+      );
+      const products = new Products();
+      products.addProd(acer);
+      products.addProd(apple);
+      products.addProd(hp);
+      products.addProd(lenovo);
+      console.log(products);
+      function generateProducsDiv(products) {
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("wrapper");
+        const prods = document.createElement("div");
+        prods.classList.add("products");
+        wrapper.appendChild(prods);
+
+        for (const product of products) {
+          const prod = document.createElement("div");
+          prod.classList.add("product");
+          const sellStatus = document.createElement("div");
+          sellStatus.classList.add("sell-status");
+          sellStatus.innerText = product.sellStatus;
+          const img = document.createElement("img");
+          img.src = product.productImg;
+          const brand = document.createElement("div");
+          brand.classList.add("brand-model");
+          brand.innerText = product.brand + " " + product.model;
+          const price = document.createElement("div");
+          price.classList.add("price");
+          prod.appendChild(sellStatus);
+          prod.appendChild(img);
+          prod.appendChild(brand);
+          prod.appendChild(price);
+          prods.appendChild(prod);
+        }
+        return wrapper;
+      }
+      const body = document.querySelector("body");
+      const btn = document.querySelector(".button");
+      body.insertBefore(generateProducsDiv(products.products), btn);
+      const prods = document.querySelector(".products");
+      prods.addEventListener("click", (e) => {
+        e.target.parentElement.classList.toggle("focus");
+      });
+    </script>
+    <style>
+      .products {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+      .product {
+      }
+      .focus {
+        border: 1px solid red;
+      }
+    </style>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>

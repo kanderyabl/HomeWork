@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 19</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 19</h1>
+    <h3>task 6</h3>
+    <p class="tz">
+      Дано список спортсменів. Потрібно сформувати список тих, які будуть брати
+      участь у змаганні. При цьому є два стовпці. В одному відображені всі
+      спортсмени, в іншому – список тих, хто був вибраний. При натисканні на
+      зелену стрілку спортсмен переміщається у список для змагань. При
+      натисканні на червону стрілку спортсмен переміщається у загальний список.
+    </p>
+    <div class="lists">
+      <div class="list list-all">
+        <div class="sportsmen">John Smith</div>
+        <div class="sportsmen">Emily Johnson</div>
+        <div class="sportsmen">Michael Brown</div>
+        <div class="sportsmen">Sarah Davis</div>
+      </div>
+      <div class="list list-select">
+        <div class="sportsmen">David Wilson</div>
+      </div>
+    </div>
+    <style>
+      .lists {
+        display: flex;
+        gap: 40px;
+      }
+      .list {
+        padding: 10px;
+        border: 1px solid black;
+        /* width: 200px; */
+        /* display: flex; */
+      }
+      .list-all .sportsmen::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-image: url("./arrow.svg");
+        background-position: center;
+        background-size: cover;
+        display: inline-block;
+        /* margin-left: 10px; */
+        right: 0;
+        float: right;
+      }
+      .sportsmen {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        border: 1px solid black;
+        padding: 5px;
+        cursor: pointer;
+        padding-right: 30px;
+      }
+      .list-select .sportsmen::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-image: url("./arrow-left.svg");
+        background-position: center;
+        background-size: cover;
+        display: inline-block;
+        /* margin-left: 10px; */
+        right: 0;
+        float: right;
+      }
+    </style>
+    <script>
+      const lists = document.querySelector(".lists");
+      lists.addEventListener("click", (e) => {
+        const target = e.target;
+        if (target.parentElement.classList.contains("list-all")) {
+          const selectSportsmens = document.querySelector(".list-select");
+          selectSportsmens.appendChild(target);
+        } else if (target.parentElement.classList.contains("list-select")) {
+          const allSportsmens = document.querySelector(".list-all");
+          allSportsmens.appendChild(target);
+        }
+      });
+    </script>
+    <a href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
