@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 19</title>
+    <link rel="stylesheet" href="./../../syle.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>lesson 20</h1>
+    <h3>task 1</h3>
+    <p class="tz">
+      Перекладач. Користувачу виводять змішані картки з словами на англійській і
+      українській мові. Користувач поступово клікає на картки (виділяємо синьою
+      рамкою). Якщо знайдено правильні пари карток, що відповідають одному
+      слову, то видаляємо ці картки. Інакше - виділяємо червоною рамкою і через
+      секунду забираємо рамку.
+    </p>
+
+    <script>
+      const words = [
+        { id: 0, en: "apple", ua: "яблуко" },
+        { id: 1, en: "cat", ua: "кіт" },
+        { id: 2, en: "dog", ua: "собака" },
+        { id: 3, en: "house", ua: "будинок" },
+        { id: 4, en: "tree", ua: "дерево" },
+        { id: 5, en: "book", ua: "книга" },
+        { id: 6, en: "sun", ua: "сонце" },
+        { id: 7, en: "computer", ua: "комп’ютер" },
+        { id: 8, en: "river", ua: "річка" },
+        { id: 9, en: "city", ua: "місто" },
+      ];
+
+      class Translater {
+        constructor(wordObj) {
+          this.words = wordObj;
+        }
+
+        shuffleArray(array) {
+          const newArray = [...array];
+          for (let i = newArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+          }
+          return newArray;
+        }
+
+        generateTable() {
+          const wrapper = document.createElement("div");
+          wrapper.classList.add("wrapper");
+          let firstWord, secondWord;
+          //===
+          const enWordsList = document.createElement("div");
+          enWordsList.classList.add("en-words_list");
+          enWordsList.setAttribute("selected", false);
+          for (const word of this.words) {
+            const enWord = document.createElement("div");
+            enWord.innerText = word.en;
+            enWord.setAttribute("word-id", word.id);
+            enWord.classList.add("word");
+            enWordsList.appendChild(enWord);
+          }
+          //===
+          const shuffleWords = this.shuffleArray(this.words);
+          const uaWordsList = document.createElement("div");
+          uaWordsList.classList.add("ua-words_list");
+          uaWordsList.setAttribute("selected", false);
+          for (const word of shuffleWords) {
+            const uaWord = document.createElement("div");
+            uaWord.innerText = word.ua;
+            uaWord.setAttribute("word-id", word.id);
+            uaWord.classList.add("word");
+
+            uaWordsList.appendChild(uaWord);
+          }
+          //===
+          wrapper.appendChild(enWordsList);
+          wrapper.appendChild(uaWordsList);
+          wrapper.addEventListener("click", (e) => {
+            const target = e.target;
+
+            if (target.classList.contains("word")) {
+              const targetParent = target.parentElement;
+              if (targetParent.getAttribute("selected") === "false") {
+                targetParent.setAttribute("selected", "true");
+                target.classList.add("select");
+                if (targetParent.classList.contains("en-words_list"))
+                  firstWord = target;
+                else if (targetParent.classList.contains("ua-words_list"))
+                  secondWord = target;
+                const firstList = document.querySelector(".en-words_list");
+                const secondList = document.querySelector(".ua-words_list");
+                if (
+                  firstList.getAttribute("selected") === "true" &&
+                  secondList.getAttribute("selected") === "true"
+                ) {
+                  if (
+                    firstWord.getAttribute("word-id") ===
+                    secondWord.getAttribute("word-id")
+                  ) {
+                    firstWord.classList.add("true-select");
+                    secondWord.classList.add("true-select");
+                    setTimeout(() => {
+                      firstWord.remove();
+                      secondWord.remove();
+                      firstList.setAttribute("selected", "false");
+                      secondList.setAttribute("selected", "false");
+                    }, 2000);
+                  } else {
+                    firstWord.classList.add("false-select");
+                    secondWord.classList.add("false-select");
+                    setTimeout(() => {
+                      firstWord.classList.remove("false-select");
+                      secondWord.classList.remove("false-select");
+                      firstWord.classList.remove("select");
+                      secondWord.classList.remove("select");
+                      firstList.setAttribute("selected", "false");
+                      secondList.setAttribute("selected", "false");
+                    }, 2000);
+                  }
+                }
+              }
+            }
+          });
+          //===
+          return wrapper;
+        }
+      }
+
+      const translater = new Translater(words);
+      const body = document.querySelector("body");
+      const btn = document.querySelector(".button");
+      body.insertBefore(translater.generateTable(), btn);
+    </script>
+    <style>
+      .wrapper {
+        max-width: 400px;
+        display: flex;
+        gap: 30px;
+        border: 1px solid black;
+        justify-content: space-between;
+        padding: 2px;
+        background: #fff;
+        font-size: 32px;
+      }
+      .word {
+        padding: 5px;
+        border: 1px solid black;
+        cursor: pointer;
+      }
+      .select {
+        border: 1px solid blue;
+      }
+      .true-select {
+        border: 1px solid greenyellow;
+      }
+      .false-select {
+        border: 1px solid red;
+      }
+    </style>
+    <a class="button" href="./../index.html"><h2>back</h2></a>
+  </body>
+</html>
